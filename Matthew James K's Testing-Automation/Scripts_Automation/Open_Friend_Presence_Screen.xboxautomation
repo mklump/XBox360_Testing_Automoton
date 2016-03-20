@@ -1,0 +1,22 @@
+﻿wait 5000
+
+B_Button
+wait 1000
+
+B_Button
+wait 1000
+
+Xbox360_Button
+wait 5000
+
+DPadDown
+wait 500
+
+A_Button
+wait 5000
+
+Y_Button
+wait 2000
+
+Y_Button
+wait 2000

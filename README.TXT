@@ -1,0 +1,4 @@
+These code file folders Automaton_docs_subset, XBox360_TestAssistance_Framework, and Matthew James K's Testing-Automation contributon are the original version 1.0 XBox 360 test assistance framework, and is not stand alone for purposes of information hiding.
+It was gruling at the time in terms of design, development, functional/usecase testing, and training that truly fit the rest of the test assistance framework, but well worth it all in the end as it was very well received in the removal process of extra manual testing steps.
+Again much, much thanks to Kevin, Colen, Rose, Experis, and Lyndon for leading us in this valiant push forward.
+These code files cannot be compiled without their companion source for purposes of information hiding, and are presently only available as an example of exellently designed, developped, and functional/usecase tested code with some internal automation done in near purest of C#, WPF, XAML, HTML4.0, SQL, XSLT, and XML.

@@ -1,0 +1,58 @@
+﻿launchdevdashboard
+
+B_Button
+wait 1000
+
+B_Button
+wait 1000
+
+X_Button
+wait 500
+
+DPadDown
+wait 500
+
+A_Button
+wait 500
+
+DPadDown
+wait 500
+
+DPadDown
+wait 500
+
+DPadDown
+wait 500
+
+DPadDown
+wait 500
+
+A_Button
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadDown
+wait 500
+
+DPadDown
+wait 500
+
+A_Button
+waitforreboottocomplete

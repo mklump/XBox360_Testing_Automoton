@@ -1,0 +1,84 @@
+﻿launchdevdashboard
+
+// Make sure we aren't in any menu by Pressing B 4 times
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+// Select Xbox360 Guide Menu
+Xbox360_Button
+wait 4000
+
+// Select Settings
+DPadRight
+wait 250
+
+DPadRight
+wait 250
+
+// Select to top of the Settings Menu
+DPadUp
+wait 250
+
+DPadUp
+wait 250
+
+DPadUp
+wait 250
+
+DPadUp
+wait 250
+
+DPadUp
+wait 250
+
+// Press Down once to Preferences
+DPadDown
+wait 500
+
+// Select Preferences
+A_Button
+wait 2000
+
+// Press Down twice to Voice
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Select Voice
+A_Button
+wait 3000
+
+// Navigate to the bottom of the Voice Menu
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Select Play Through Both radio button
+A_Button
+wait 2000
+
+// Close the Xbox360 Guide Menu
+Xbox360_Button
+wait 2000

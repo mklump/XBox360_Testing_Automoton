@@ -1,0 +1,255 @@
+﻿<Grid x:Class="MPS115.MPS115CTC1UI"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:vm="clr-namespace:MPS115"
+            Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" >
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <Style TargetType="Border" x:Key="ModuleBorderStyle">
+                <Setter Property="BorderBrush" Value="#FF828790" />
+                <Setter Property="BorderThickness" Value="2" />
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TitleField">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Button" x:Key="BeginButtonStyle">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="Content" Value="Begin" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+            </Style>
+            <Style TargetType="Button" x:Key="NextButtonStyle">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="Content" Value="Next" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+            </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <StackPanel Orientation="Vertical">
+        <!-- Test Case Title -->
+        <TextBlock Text="CAT Module For CTC MPS 115-1" Style="{StaticResource TitleField}" />
+        <!-- Module Name -->
+        <TextBlock Text="Game Invitations" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Vertical" Visibility="{Binding FirstPageVisibility}">
+
+            <!-- module instructions -->
+            <Border MaxWidth="300" Style="{StaticResource ModuleBorderStyle}">
+
+                    <Grid>
+                        <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" xml:space="preserve" MaxWidth="300">
+
+This module is MPS 115-1 - Game Invitations
+
+This test involves joining multiplayer game sessions
+between TWO different devkits.
+        
+Please select TWO devkits for this test.
+
+                        </TextBox>
+                    </Grid>
+
+            </Border>
+           <!-- <Button Click="NextPage" Style="{StaticResource BeginButtonStyle}"/> -->
+            <Button Click="BeginMUTest" Content ="Begin MU Test" Style="{StaticResource ThemeButtonStyle}" MaxWidth="150" Margin="5"/>
+            <Button Click="BeginHDTest" Content="Begin Hard Drive Test" Style="{StaticResource ThemeButtonStyle}" MaxWidth="150" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Visibility="{Binding SecondPageVisibility}">
+
+            <!-- module instructions -->
+            <Grid MaxWidth="900" MinHeight="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="2" Grid.RowSpan="3" Margin="2">
+                <Grid Grid.Column="0" Grid.Row="0" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right">Console:</Label>
+                    <Label Grid.Column="1" HorizontalAlignment="Left" Content="{Binding Console1Name}"></Label>
+                </Grid>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="2"></Border>
+                <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" Margin="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" HorizontalAlignment="Right">Console:</Label>
+                    <Label Grid.Column="1" Content="{Binding Console2Name}"></Label>
+                </Grid>
+                <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+                    <Label Content="{Binding ProfileAInstalled}"></Label>
+                    <Label Content="{Binding ProfileALaunched}"></Label>
+                </StackPanel>
+                <Grid Grid.Row="2" HorizontalAlignment="Stretch" Background="Black" Margin="4">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Foreground="White">Profile A:</Label>
+                        <Label Content="{Binding ProfileAName}" Foreground="White"></Label>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Orientation="Vertical" Grid.Column="1"  Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center">
+                    <Label Content="{Binding ProfileBInstalled}"></Label>
+                    <Label Content="{Binding ProfileBLaunched}"></Label>  
+                </StackPanel>
+                <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Background="Black" Margin="4,4,0,4">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Label Foreground="White">Profile B:</Label>
+                        <Label Content="{Binding ProfileBName}" Foreground="White"></Label>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Background="Black" Margin="0,4,4,4">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Foreground="White">Profile C:</Label>
+                    <Label Foreground="White" Content="{Binding ProfileCName}"></Label>
+                </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Visibility="{Binding Instructions1Visible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0" Grid.Row="0" IsReadOnly="True" FontSize="16" FontWeight="Bold">Same Title - Active Player</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="1" IsReadOnly="True">1. Using Profile A, download one of each type of available DLC.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="2" IsReadOnly="True">2. Using Profile A, host a game session send a game invite to Profile B.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="3" IsReadOnly="True">3. Using Profile B, accept the game invitation from Profile A.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Background="White">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                    <TextBox Grid.Column="0" Grid.Row="4" IsReadOnly="True">4. Using Profile B, exit the game session.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" IsReadOnly="True">5. Using Profile B, join Profile A's game session via 'Join Session In Progress' from the Friends List.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="5" Background="White">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Visibility="{Binding Instructions2Visible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0" Grid.Row="0" IsReadOnly="True" FontSize="16" FontWeight="Bold">Same Title - Inactive Player</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="1" IsReadOnly="True">1. Ensure that both Profile B and Profile C are signed in.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="2" IsReadOnly="True">2. Using Profile B, enter gameplay.  Leave Profile C inactive.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="3" IsReadOnly="True">3. Using Profile A, host a game session and send a game invite to Profile C.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="4" IsReadOnly="True">4. Using Profile C, accept the game invitation from Profile A.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="4" Background="White" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                    <TextBox Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" IsReadOnly="True">5. Using Profile C, exit the game session.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="6" TextWrapping="Wrap" IsReadOnly="True">6. Using Profile C, join Profile A's game session via 'Join Session In Progress' from the Friends List.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="6" Background="White" HorizontalAlignment="Stretch">
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Visibility="{Binding Instructions3Visible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Column="0" Grid.Row="0" IsReadOnly="True" FontSize="16" FontWeight="Bold">Cross Title</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="1" IsReadOnly="True">1. Ensure that Profile C is signed out.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="2" IsReadOnly="True">2. Using Profile B, launch a different title and enter gameplay.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="3" IsReadOnly="True">3. Using Profile A, host a game session and send a game invite to Profile C.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="4" IsReadOnly="True">4. Using Profile B, accept the game invitation from Profile A.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Background="White">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailA_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestA}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                    <TextBox Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" IsReadOnly="True">5. Using Profile B, exit the game session.</TextBox>
+                    <TextBox Grid.Column="0" Grid.Row="6" TextWrapping="Wrap" IsReadOnly="True">6. Using Profile B, join Profile A's game session via 'Join Session In Progress' from the Friends List.</TextBox>
+                    <Grid Grid.Column="1" Grid.Row="6" Background="White" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailB_Click" Width="100" Margin="3" IsEnabled="{Binding CanPassTestB}">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <TextBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="50" MaxWidth="900" Margin="3" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" Foreground="White">
+                This module must be re-run for all game modes that support online multiplayer game sessions.
+            </TextBox>
+
+            <Button Click="NextPage" Style="{StaticResource ThemeButtonStyle}" Content="Next" IsEnabled="{Binding CanGoToNextTest}" MaxWidth="150" Margin="5"/>
+            <!-- <Label Content="{Binding ReadyMessage}"></Label> -->
+
+
+
+        </StackPanel>
+    </StackPanel>
+</Grid>

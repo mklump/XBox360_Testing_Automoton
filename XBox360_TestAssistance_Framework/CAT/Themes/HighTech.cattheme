@@ -1,0 +1,78 @@
+﻿<CATTheme>
+  <Foreground1 Value="ff232d33" />
+  <Foreground2 Value="White" />
+  <Foreground3 Value="Gray" />
+  <Foreground4 Value="#FF17384d" />
+
+  <Background1 Value="White" />
+  <Background2 Value="#FF849696" />
+  <Background3 Value="#FF61748C" />
+  <Background4 Value="#FF17384d" />
+
+  <TextBoxBackground Value="White" />
+  <TextBoxForeground Value="Black" />
+
+  <TabControlBackground Value="White" />
+  <TabControlForeground Value="Black" />
+  <TabControlBorderColor Value="Black" />
+
+  <TabItemBackground Value="White" />
+  <TabItemForeground Value="Black" />
+  <TabItemBorderColor Value="Black" />
+
+  <TabItemBackgroundDeselected Value="#FFF0F0F0" />
+  <TabItemForegroundDeselected Value="Black" />
+  <TabItemBorderColorDeselected Value="Black" />
+
+  <ComboBoxForeground Value="White" />
+  <ComboBoxForegroundDisabled Value="White" />
+  <ComboBoxForegroundMouseOver Value="White" />
+  <ComboBoxForegroundPressed Value="White" />
+
+  <ComboBoxBackground Value="#FF849696" />
+  <ComboBoxBackgroundDisabled Value="LightGray" />
+  <ComboBoxBackgroundMouseOver Value="#FF5F5F5F" />
+  <ComboBoxBackgroundPressed Value="#FF3F3F3F" />
+
+  <ComboBoxItemBackground Value="#FF849696" />
+  <ComboBoxItemForeground Value="White" />
+
+  <ButtonForeground Value="White" />
+  <ButtonForegroundDisabled Value="White" />
+  <ButtonForegroundPressed Value="White" />
+  <ButtonForegroundMouseOver Value="White" />
+  <ButtonBackground Value="#FFFAFAFA" Value2="#FFff972c" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundMouseOver Value="#FFFAFAFA" Value2="#FFff979c" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundPressed Value="#FFff972c" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ButtonBackgroundDisabled Value="White" Value2="Gray" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBorderThickness Value="1" />
+  <ButtonPadding Value="2" />
+  <ButtonCornerRadius Value="5" />
+
+  <ButtonForeground2 Value="White" />
+  <ButtonForegroundDisabled2 Value="White" />
+  <ButtonForegroundPressed2 Value="White" />
+  <ButtonForegroundMouseOver2 Value="White" />
+  <ButtonBackground2 Value="#FFFAFAFA" Value2="#FF232d33" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundMouseOver2 Value="#FFFAFAFA" Value2="#FF232d93" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundPressed2 Value="#FF232d33" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ButtonBackgroundDisabled2 Value="White" Value2="Gray" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBorderThickness2 Value="1" />
+  <ButtonPadding2 Value="2" />
+  <ButtonCornerRadius2 Value="5" />
+
+  <ToggleButtonForeground Value="White" />
+  <ToggleButtonForegroundDisabled Value="White" />
+  <ToggleButtonForegroundPressed Value="White" />
+  <ToggleButtonForegroundMouseOver Value="White" />
+  <ToggleButtonForegroundChecked Value="White" />
+  <ToggleButtonBackground Value="#FFFAFAFA" Value2="#FFff972c" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundMouseOver Value="#FFFAFAFA" Value2="#FFff979c" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundPressed Value="#FFff972c" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ToggleButtonBackgroundDisabled Value="White" Value2="Gray" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundChecked Value="#FFFAFAFA" Value2="#FFF43C83" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBorderThickness Value="1" />
+  <ToggleButtonPadding Value="2" />
+  <ToggleButtonCornerRadius Value="5" />
+
+</CATTheme>

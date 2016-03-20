@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tables>
+  <TCRDefinition>
+    <tcr_id>1</tcr_id>
+    <short_description>Windows Phone 8.0 Certificaton Requirement</short_description>
+    <category>BAS</category>
+    <requirements>
+      On a functional console, the game must not enter an extended unresponsive state, cause unintentional loss of player data, crash, or cause an unintended reboot of the machine.
+      </requirements>
+    <intent>
+      Console game players expect that console games just work. Games that crash or hang or lose player progress reflect poorly on the Xbox 360 experience.
+      </intent>
+    <remarks></remarks>
+    <exemptions>none</exemptions>
+  </TCRDefinition>
+</Tables>

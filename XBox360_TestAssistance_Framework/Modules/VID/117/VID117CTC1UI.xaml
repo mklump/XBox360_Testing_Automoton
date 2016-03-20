@@ -1,0 +1,846 @@
+﻿<Grid x:Class="VID117.VID117CTC1UI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:VID117"
+    Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" >
+    <Grid.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <vm:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter"/>
+        <Style TargetType="Border" x:Key="ModuleBorderStyle">
+            <Setter Property="BorderBrush" Value="#FF828790" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TitleField">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ModeField">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Button" x:Key="ModuleButtonStyle" BasedOn="{StaticResource ThemeButtonStyle}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+            
+        </ResourceDictionary>
+    </Grid.Resources>
+    <StackPanel Orientation="Vertical">
+        <!-- Test Case Title -->
+        <TextBlock Text="CAT Module For VID 117" Style="{StaticResource TitleField}" />
+        <!-- Module Name -->
+        <Grid Margin="5,0,0,0" >
+            <TextBlock Text="VID 117 - Video Mode Support" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <!-- module instructions -->
+        <Grid Visibility="{Binding Path=FirstPageVisibility}">
+            <StackPanel Orientation="Vertical">
+                <Border Style="{StaticResource ModuleBorderStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" xml:space="preserve">
+            This module will help you check all possible video cables, modes and resolutions.  After launching you 
+            will be prompted to select the cable. We will then guide you through all possible resolutions for that
+            cable.  We'll automatically change the resolution and launch the game, leaving you to interact with the
+            title and determine whether it Passes or Fails for each resolution/mode.
+                                </TextBox>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Button Click="NextPage" Content="Begin" Style="{StaticResource ModuleButtonStyle}"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Visibility="{Binding Path=SecondPageVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="1" Grid.Row="0" Click="SelectHDMI" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" >
+                    <Image Source="Images/hdmiCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }" >HDMI</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="2" Grid.Row="0" Click="SelectComponent" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical"  >
+                    <Image Source="Images/componentCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">Component</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="3" Grid.Row="0" Click="SelectVGA" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="Images/vgaCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">VGA</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="1" Grid.Row="1" Click="SelectComposite" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="Images/compositeCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">Composite</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="2" Grid.Row="1" Click="SelectSVideo" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="Images/sVideoCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">S-Video</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="3" Grid.Row="1" Click="SelectSCART" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="Images/scartCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">SCART</Label>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource ThemeButtonStyle}" Grid.Column="1" Grid.Row="2" Click="SelectDTerminal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Image Source="Images/vgaCable.png" Width="80" Height="80"></Image>
+                    <Label HorizontalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=Button} }">D-Terminal</Label>
+                </StackPanel>
+            </Button>
+            <Label Grid.Column="3" Grid.Row="3" Content="Select a Cable to Begin" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Visibility="{Binding Path=ThirdPageVisibility}">
+            <StackPanel Orientation="Vertical">
+                <Grid Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid Visibility="{Binding VGAVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                        <Label Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="930" >VGA</Label>
+                        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding VGAObservedList, Mode=OneWay}" IsReadOnly="True" RowHeaderWidth="85"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="1" Width="930" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                            <DataGrid.RowHeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                                </DataTemplate>
+                            </DataGrid.RowHeaderTemplate>
+                            <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="640x480">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="640x480 W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="848x480">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[2].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[2].StatusImage}" Height="30" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1280x720">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[3].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[3].StatusImage}" Height="30" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1024x768">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[4].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[4].StatusImage}" Height="30" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1024x768 W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[5].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[5].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[5].StatusImage}" Height="30" Visibility="{Binding Resolutions[5].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1280x768">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[6].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[6].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[6].StatusImage}" Height="30" Visibility="{Binding Resolutions[6].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1360x768">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[7].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[7].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[7].StatusImage}" Height="30" Visibility="{Binding Resolutions[7].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1440x900">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[8].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[8].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[8].StatusImage}" Height="30" Visibility="{Binding Resolutions[8].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1280x1024">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[9].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[9].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[9].StatusImage}" Height="30" Visibility="{Binding Resolutions[9].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1280x1024 W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[10].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[10].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[10].StatusImage}" Height="30" Visibility="{Binding Resolutions[10].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1680x1050">
+                                <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[11].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[11].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[11].StatusImage}" Height="30" Visibility="{Binding Resolutions[11].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1920x1080">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[12].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[12].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[12].StatusImage}" Height="30" Visibility="{Binding Resolutions[12].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                   </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Visibility="{Binding HDMIVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical"  Grid.RowSpan="2">
+                        <Label Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="300">HDMI</Label>
+                        <DataGrid ItemsSource="{Binding HDMIObservedList}" IsReadOnly="True" RowHeaderWidth="86"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserReorderColumns="False"
+                                  CanUserResizeColumns="False"
+                                  CanUserResizeRows="False"
+                                  CanUserSortColumns="False"
+                                  AutoGenerateColumns="False" Grid.RowSpan="2" Width="300" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                            <DataGrid.RowHeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                                </DataTemplate>
+                            </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="480p" IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="480p W" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="720p" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[2].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[2].StatusImage}" Height="30" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="1080i" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[3].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[3].StatusImage}" Height="30" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="1080p" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Grid>
+                                                <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image Source="{Binding Resolutions[4].StatusImage}" Height="30"></Image>
+                                                </Border>
+                                                <Image Source="{Binding Resolutions[4].StatusImage}" Height="30" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                            </Grid>
+                                        </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Visibility="{Binding SVideoVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="232">S-Video</Label>
+                    <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SVideoObservedList}" IsReadOnly="True" RowHeaderWidth="142"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="2" Width="232" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="480i">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="480i W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Visibility="{Binding SCARTVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="184">SCART</Label>
+                    <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SCARTObservedList}" IsReadOnly="True" RowHeaderWidth="94"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="2" Width="184" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="480i">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="480i W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Visibility="{Binding CompositeVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="232">Composite</Label>
+                    <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CompositeObservedList}" IsReadOnly="True" RowHeaderWidth="142"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="2" Width="232" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="480i">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="480i W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Visibility="{Binding ComponentVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="354" >Component</Label>
+                    <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ComponentObservedList}" IsReadOnly="True" RowHeaderWidth="140"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="2" Width="354" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged">
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="480p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="480p W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="720p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[2].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[2].StatusImage}" Height="30" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1080i">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[3].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[3].StatusImage}" Height="30" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1080p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[4].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[4].StatusImage}" Height="30" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <Grid Visibility="{Binding DTerminalVisibility}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalContentAlignment="Center" Width="304" >D-Terminal</Label>
+                    <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding DTerminalObservedList}" IsReadOnly="True" RowHeaderWidth="90"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              CanUserReorderColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              CanUserSortColumns="False"
+                              AutoGenerateColumns="False" Grid.RowSpan="2" Width="304" HeadersVisibility="All" CurrentCellChanged="DataGrid_CurrentCellChanged" >
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type DataGridRow}}, 
+                                      Path=Item.StandardString}"/>
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="480p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[0].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[0].StatusImage}" Height="30" Visibility="{Binding Resolutions[0].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="480p W">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[1].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[1].StatusImage}" Height="30" Visibility="{Binding Resolutions[1].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="720p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[2].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[2].StatusImage}" Height="30" Visibility="{Binding Resolutions[2].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1080i">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[3].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[3].StatusImage}" Height="30" Visibility="{Binding Resolutions[3].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="1080p">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Border BorderBrush="Black" BorderThickness="3" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Resolutions[4].StatusImage}" Height="30"></Image>
+                                            </Border>
+                                            <Image Source="{Binding Resolutions[4].StatusImage}" Height="30" Visibility="{Binding Resolutions[4].IsActive, Converter={StaticResource InvertBooleanToVisibilityConverter}}"></Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                
+                </Grid>
+
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,5,0">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" xml:space="preserve" Height="150" Text="{Binding ResolutionPageMessage}" Background="White" Margin="0,0,0,5"/>
+                    </StackPanel >
+                    <Grid Background="{Binding DataContext.CurrentTheme.Background3, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" Grid.Column="2" Margin="0,0,0,5">
+                        <StackPanel  Orientation="Vertical" VerticalAlignment="Center" Margin="0" Background="{Binding DataContext.CurrentTheme.Background3, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+                            <Button Style="{StaticResource ThemeButtonStyle}" Margin="5" Click="LooksGood">Pass</Button>
+                            <Button Style="{StaticResource ThemeButtonStyle}" Margin="5"  Click="LooksBad">Fail</Button>
+                    </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="5,0,0,5">
+                        <Border BorderBrush="Black" BorderThickness="2">
+                        <Grid Height="100" Width="180">
+                                <TextBlock Width="100" TextWrapping="WrapWithOverflow" VerticalAlignment="Center">Pass or Fail this test to continue to the next.</TextBlock>
+                            <Image Height="100" Source="{Binding Path=LastScreenshotImageContents}" ToolTipService.ShowDuration="1440000" HorizontalAlignment="Center">
+                        <Image.ToolTip>
+                            <Image Width="640" Height="480" Stretch="Fill" Source="{Binding Path=LastScreenshotImageContents}"/>
+                        </Image.ToolTip>
+                    </Image>
+                        </Grid>
+                        </Border>
+                        <Grid Background="{Binding DataContext.CurrentTheme.Background3, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5,0" >
+                                <Button Click="TestCable" Content="Skip Test" Margin="5" Style="{StaticResource ModuleButtonStyle}" Visibility="{Binding CanSkipTest, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Right"/>
+                                <Button Click="TestCable" Content="Next Test" Margin="5" Style="{StaticResource ModuleButtonStyle}" Visibility="{Binding CanDoNextTest, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Right"/>
+                                <Button Click="NextPage" Content="Select Cable" Margin="5" Style="{StaticResource ModuleButtonStyle}" HorizontalAlignment="Right" />
+                        </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Grid>
+    

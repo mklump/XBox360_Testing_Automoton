@@ -1,0 +1,78 @@
+<CATTheme>
+  <Foreground1 Value="Black" />
+  <Foreground2 Value="LightBlue" />
+  <Foreground3 Value="Gray" />
+  <Foreground4 Value="#FF61748C" />
+  
+  <Background1 Value="#FFE0E0E0" />
+  <Background2 Value="#FFDFCAE5" />
+  <Background3 Value="#FF8C6174" />
+  <Background4 Value="#FFA57DAB" />
+
+  <TextBoxBackground Value="LightYellow" />
+  <TextBoxForeground Value="Black" />
+
+  <TabControlBackground Value="LightYellow" />
+  <TabControlForeground Value="DarkBlue" />
+  <TabControlBorderColor Value="DarkBlue" />
+  
+  <TabItemBackground Value="LightYellow" />
+  <TabItemForeground Value="DarkBlue" />
+  <TabItemBorderColor Value="DarkBlue" />
+
+  <TabItemBackgroundDeselected Value="#FFF0F0F0" />
+  <TabItemForegroundDeselected Value="DarkBlue" />
+  <TabItemBorderColorDeselected Value="DarkBlue" />
+
+  <ComboBoxForeground Value="Yellow" />
+  <ComboBoxForegroundDisabled Value="Yellow" />
+  <ComboBoxForegroundMouseOver Value="Yellow" />
+  <ComboBoxForegroundPressed Value="Yellow" />
+  
+  <ComboBoxBackground Value="#FF117A60" />
+  <ComboBoxBackgroundDisabled Value="#FF117AFF" />
+  <ComboBoxBackgroundMouseOver Value="LightGreen" />
+  <ComboBoxBackgroundPressed Value="DarkGreen" />
+  
+  <ComboBoxItemBackground Value="#FF117A60" />
+  <ComboBoxItemForeground Value="Yellow" />
+
+  <ButtonForeground Value="LightYellow" />
+  <ButtonForegroundDisabled Value="LightYellow" />
+  <ButtonForegroundPressed Value="LightYellow" />
+  <ButtonForegroundMouseOver Value="LightYellow" />
+  <ButtonBackground Value="#FFFAFAFA" Value2="#FF3C23A4" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundMouseOver Value="#FFFAFAFA" Value2="#FF5E4BAD" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundPressed Value="#FF3C23A4" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ButtonBackgroundDisabled Value="#FFBFBFBF" Value2="#FF7565B8" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBorderThickness Value="1" />
+  <ButtonPadding Value="2" />
+  <ButtonCornerRadius Value="5" />
+
+  <ButtonForeground2 Value="LightYellow" />
+  <ButtonForegroundDisabled2 Value="LightYellow" />
+  <ButtonForegroundPressed2 Value="LightYellow" />
+  <ButtonForegroundMouseOver2 Value="LightYellow" />
+  <ButtonBackground2 Value="#FFFAFAFA" Value2="#FF3C23A4" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundMouseOver2 Value="#FFFAFAFA" Value2="#FF5037B8" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBackgroundPressed2 Value="#FF3C23A4" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ButtonBackgroundDisabled2 Value="#FFFAFAFA" Value2="#FFA43C23" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ButtonBorderThickness2 Value="1" />
+  <ButtonPadding2 Value="2" />
+  <ButtonCornerRadius2 Value="5" />
+
+  <ToggleButtonForeground Value="LightYellow" />
+  <ToggleButtonForegroundDisabled Value="LightYellow" />
+  <ToggleButtonForegroundPressed Value="LightYellow" />
+  <ToggleButtonForegroundMouseOver Value="LightYellow" />
+  <ToggleButtonForegroundChecked Value="LightYellow" />
+  <ToggleButtonBackground Value="#FFFAFAFA" Value2="#FF3C23A4" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundMouseOver Value="#FFFAFAFA" Value2="#FF5E4BAD" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundPressed Value="#FF3C23A4" Value2="#FFFAFAFA" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,1" />
+  <ToggleButtonBackgroundDisabled Value="#FFBFBFBF" Value2="#FF7565B8" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBackgroundChecked Value="#FFFAFAFA" Value2="#FF8C2334" Type="LinearGradient" GradientStart="0.5,0" GradientEnd="0.5,0.5" />
+  <ToggleButtonBorderThickness Value="1" />
+  <ToggleButtonPadding Value="2" />
+  <ToggleButtonCornerRadius Value="5" />
+
+</CATTheme>

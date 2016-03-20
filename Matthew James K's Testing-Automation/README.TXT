@@ -1,0 +1,4 @@
+These 11 code files and the Scripts_Automation folder represent the bulk of the test automation development I performed for the XBox360_TestAssitance_Framework team project folder.
+It was gruling at the time in terms of design and development that truly fit the rest of the test framework, but well worth it all in the end including the hours on end of functional testing and use case testing.
+Again much, much thanks to Kevin, Colen, Rose, Experis, and Lyndon for leading us in this valiant push forward.
+These code files cannot be compiled without their companion source for purposes of information hiding, and are presently only available as an example of exellently designed, developped, and functionlal/usecase tested code with some internal automation done in near purest of C#, WPF, XAML, HTML4.0, SQL, XSLT, and XML.

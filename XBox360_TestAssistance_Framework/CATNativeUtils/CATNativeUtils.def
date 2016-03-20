@@ -1,0 +1,3 @@
+LIBRARY   CATNativeUtils
+EXPORTS
+   LookupSymbol

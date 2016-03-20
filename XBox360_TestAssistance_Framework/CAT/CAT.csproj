@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2D56E1C-6EA2-4D35-B355-0AE70195CCE2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAT</RootNamespace>
+    <AssemblyName>CAT</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CAT.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Test.Xbox.Profiles">
+      <HintPath>C:\Program Files (x86)\Microsoft Xbox 360 SDK\bin\win32\Microsoft.Test.Xbox.Profiles.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Xbox 360 SDK\bin\win32\Microsoft.Xna.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF\PresentationUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="xdevkit">
+      <HintPath>C:\Program Files (x86)\Microsoft Xbox 360 SDK\bin\win32\xdevkit.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ConsoleProfileSelectedVisibilityConverter.cs" />
+    <Compile Include="VirtualControllerViewModel.cs" />
+    <Compile Include="VirtualControllerWindow.xaml.cs">
+      <DependentUpon>VirtualControllerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileManagerViewModel.cs" />
+    <Compile Include="ScreenShotViewModel.cs" />
+    <Compile Include="HasDebugOutputSymbolsConverter.cs" />
+    <Compile Include="InvertHasDebugOutputSymbolsConverter.cs" />
+    <Compile Include="ModuleContext.cs" />
+    <Compile Include="ModuleViewItem.cs" />
+    <Compile Include="MonitorAPIStatusConverter.cs" />
+    <Compile Include="Native.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="DebugOutput.xaml.cs">
+      <DependentUpon>DebugOutput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DebugOutputViewModel.cs" />
+    <Compile Include="HtmlXamlConverter\CssStylesheet.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlCssParser.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlFromXamlConverter.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlLexicalAnalyzer.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlParser.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlSchema.cs" />
+    <Compile Include="HtmlXamlConverter\HtmlToXamlConverter.cs" />
+    <Compile Include="InvertBoolConverter.cs" />
+    <Compile Include="InvertBooleanToVisibilityConverter.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TCRPlatformViewItem.cs" />
+    <Compile Include="ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressBarViewModel.cs" />
+    <Compile Include="ShutdownSynchronization.cs" />
+    <Compile Include="TCRCategoryViewItem.cs" />
+    <Compile Include="DataModel.cs" />
+    <Compile Include="TCRTestCaseViewItem.cs" />
+    <Compile Include="TCRVersionViewItem.cs" />
+    <Compile Include="TCRViewItem.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsViewModel.cs" />
+    <Compile Include="ScreenShotWindow.xaml.cs">
+      <DependentUpon>ScreenShotWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileManagerWindow.xaml.cs">
+      <DependentUpon>ProfileManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XboxDebugManagerNative.cs" />
+    <Compile Include="XboxDevice.cs" />
+    <Compile Include="XboxModuleContext.cs" />
+    <Compile Include="XboxViewItem.cs" />
+    <Page Include="DebugOutput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VirtualControllerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScreenShotWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfileManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Themes\HighTech.cattheme">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="MonitorAPISymbols.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DebugStrings.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Themes\CoolBlue.cattheme">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Images\cat06small.png" />
+    <Resource Include="Images\cat07small.png" />
+    <Resource Include="Images\cat08small.png" />
+    <Resource Include="Images\cat09small.png" />
+    <Resource Include="Images\1stquad.png" />
+    <Resource Include="Images\2ndquad.png" />
+    <Resource Include="Images\3rdquad.png" />
+    <Resource Include="Images\4thquad.png" />
+    <Resource Include="Images\controller2.png" />
+    <Resource Include="Images\0quad.png" />
+    <Content Include="Platforms\Xbox 360\3.0a\Terminology.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Platforms\Xbox 360\3.1b\CertData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Platforms\Xbox 360\3.1b\ModuleData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Platforms\Xbox 360\3.1b\Terminology.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\BackTwice.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Communications_Set_Blocked.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Communications_Set_Everyone.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Communications_Set_Friends_Only.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Voice_Output_Set_Both.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Voice_Output_Set_HeadSet.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Voice_Output_Set_Speakers.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Themes\Alternate.cattheme">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Default.cattheme">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CAT.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Disable_Internal_MU.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Open_Friend_Presence_Screen.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Enable_Internal_MU.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Wake_Up_Xbox_Devkit.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Enable_Xbox_Live_Game_Play_Privileges.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Asia_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Australia_NewZealand_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\China_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Europe_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Japan_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\North_American_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Rest_of_World_Region.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Disable_Xbox_Live_Game_Play_Privileges.xboxautomation">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Settings.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Platforms\Windows 8 App\1\" />
+    <Folder Include="Platforms\Windows Phone 7.5\SDK 7.1\" />
+    <Folder Include="Platforms\Windows Phone 7.5\SDK 8.0\" />
+    <Folder Include="Platforms\Xbox 360\3.0\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\happy-cat-1024.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\happy_cat_16.png" />
+    <Resource Include="Images\happyCat.png" />
+    <Resource Include="Images\extMUA_trans.png" />
+    <Resource Include="Images\extMUB_trans.png" />
+    <Resource Include="Images\HDD_20px.png" />
+    <Resource Include="Images\intDevice_trans.png" />
+    <Resource Include="Images\usb_trans.png" />
+    <Resource Include="Images\defaultCheck.png" />
+    <Resource Include="Images\catface.png" />
+    <Content Include="Platforms\Windows Phone 8.0\SDK 8.0\CertData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Platforms\Xbox 360\3.0a\CertData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Platforms\Xbox 360\3.0a\ModuleData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Resource Include="Images\xdkTest_small.png" />
+    <Resource Include="Images\xdkGB_small.png" />
+    <Resource Include="Images\xdkSlim_small.png" />
+    <Resource Include="Images\xdk_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CATModel\CATModel.csproj">
+      <Project>{bd3cb4a6-8c03-4c8e-8520-def3f7dfd69c}</Project>
+      <Name>CATModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /I /Y "$(ProjectDir)..\Modules\bin\$(ConfigurationName)\*.dll" "$(TargetDir)Modules\"
+xcopy /I /Y "$(ProjectDir)..\CATNativeUtils\bin\$(ConfigurationName)\*.dll" "$(TargetDir)"
+xcopy /I /Y "$(ProjectDir)..\LaunchXContent\$(ConfigurationName)\LaunchXContent.xex" "$(TargetDir)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,267 @@
+﻿<Window x:Class="CAT.ProfileManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:CAT"
+        Background="{Binding CurrentTheme.Background2}"
+        Name="ProfileManager" ResizeMode="NoResize" SizeToContent="WidthAndHeight"
+        Title="{Binding Title}" Icon="CAT.ico" >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <vm:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter"/>
+        <vm:InvertBoolConverter x:Key="InvertBoolConverter"/>
+        <vm:ConsoleProfileSelectedVisibilityConverter x:Key="ConsoleProfileSelectedVisibilityConverter" />
+    </Window.Resources>
+
+    <StackPanel Orientation="Vertical">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                <ColumnDefinition  Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Image Grid.Row="0" Grid.Column="0" Source="Images\1stquad.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None"/>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" >
+                <ComboBox MinWidth="140"
+                          DisplayMemberPath="Gamertag" ItemsSource="{Binding AllProfiles}" SelectedItem="{Binding Quadrant1, Mode=TwoWay}" SelectedIndex="0"
+                          Style="{StaticResource ThemeComboBoxStyle}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                            <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=1 }"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+                <TextBlock Text="(Default)" Visibility="{Binding Quadrant1.IsDefault, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="0">Offline Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="1" Text="{Binding Quadrant1.OfflineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <TextBlock Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="0">Online Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Text="{Binding Quadrant1.OnlineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <!-- <TextBlock Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="0">Is Live Profile:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="1" Text="{Binding Quadrant1.IsLiveProfile, Mode=OneWay}" /> -->
+                    <TextBlock Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="0">Country:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="1" Text="{Binding Quadrant1.Country, Mode=OneWay}" />
+                    <TextBlock Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="0">Subscription Tier:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant1SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="1" Text="{Binding Quadrant1.Tier, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3" >
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding DeleteProfile1Command}" Margin="3,3,3,3" Content="Delete" Height="22" Width="90" Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding CopyProfile1Command}" Margin="3,3,3,3" Content="Copy to PC" Height="22" Width="90" Visibility="{Binding Quadrant1SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+
+            <Image Grid.Row="1" Grid.Column="0" Source="Images\2ndquad.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None"/>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" >
+                <ComboBox MinWidth="140"
+                          DisplayMemberPath="Gamertag" ItemsSource="{Binding AllProfiles}" SelectedItem="{Binding Quadrant2, Mode=TwoWay}" SelectedIndex="0"
+                          Style="{StaticResource ThemeComboBoxStyle}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                            <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=2 }"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+                <TextBlock Text="(Default)" Visibility="{Binding Quadrant2.IsDefault, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="0">Offline Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="1" Text="{Binding Quadrant2.OfflineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <TextBlock Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="0">Online Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Text="{Binding Quadrant2.OnlineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <!-- <TextBlock Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="0">Is Live Profile:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="1" Text="{Binding Quadrant2.IsLiveProfile, Mode=OneWay}" /> -->
+                    <TextBlock Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="0">Country:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="1" Text="{Binding Quadrant2.Country, Mode=OneWay}" />
+                    <TextBlock Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="0">Subscription Tier:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant2SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="1" Text="{Binding Quadrant2.Tier, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3" >
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding DeleteProfile2Command}" Margin="3,3,3,3" Content="Delete" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding CopyProfile2Command}" Margin="3,3,3,3" Content="Copy to PC" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+
+            <Image Grid.Row="2" Grid.Column="0" Source="Images\3rdquad.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None"/>
+            <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" >
+                <ComboBox MinWidth="140"
+                          DisplayMemberPath="Gamertag" ItemsSource="{Binding AllProfiles}" SelectedItem="{Binding Quadrant3, Mode=TwoWay}" SelectedIndex="0"
+                          Style="{StaticResource ThemeComboBoxStyle}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                            <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=3 }"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+                <TextBlock Text="(Default)" Visibility="{Binding Quadrant3.IsDefault, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Visibility="{Binding Quadrant3SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="0">Offline Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant3SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="1" Text="{Binding Quadrant3.OfflineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <TextBlock Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="0">Online Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Text="{Binding Quadrant3.OnlineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <!-- <TextBlock Visibility="{Binding Quadrant3SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="0">Is Live Profile:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant3SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="1" Text="{Binding Quadrant3.IsLiveProfile, Mode=OneWay}" /> -->
+                    <TextBlock Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="0">Country:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="1" Text="{Binding Quadrant3.Country, Mode=OneWay}" />
+                    <TextBlock Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="0">Subscription Tier:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant3SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="1" Text="{Binding Quadrant3.Tier, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3" >
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding DeleteProfile3Command}" Margin="3,3,3,3" Content="Delete" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding CopyProfile3Command}" Margin="3,3,3,3" Content="Copy to PC" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+            
+            <Image Grid.Row="3" Grid.Column="0" Source="Images\4thquad.png" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None"/>
+            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1" >
+                <ComboBox MinWidth="140"
+                          DisplayMemberPath="Gamertag" ItemsSource="{Binding AllProfiles}" SelectedItem="{Binding Quadrant4, Mode=TwoWay}" SelectedIndex="0"
+                          Style="{StaticResource ThemeComboBoxStyle}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                            <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=4 }"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+                <TextBlock Text="(Default)" Visibility="{Binding Quadrant4.IsDefault, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition  Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Visibility="{Binding Quadrant4SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="0">Offline Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant4SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="0" Grid.Column="1" Text="{Binding Quadrant4.OfflineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <TextBlock Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="0">Online Xuid:</TextBlock>
+                    <TextBox Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1" Text="{Binding Quadrant4.OnlineXuid, Mode=OneWay}" IsReadOnly="True" />
+                    <!-- <TextBlock Visibility="{Binding Quadrant4SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="0">Is Live Profile:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant4SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="1" Text="{Binding Quadrant4.IsLiveProfile, Mode=OneWay}" /> -->
+                    <TextBlock Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="0">Country:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="3" Grid.Column="1" Text="{Binding Quadrant4.Country, Mode=OneWay}" />
+                    <TextBlock Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="0">Subscription Tier:</TextBlock>
+                    <TextBlock Visibility="{Binding Quadrant4SignedInAndLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="1" Text="{Binding Quadrant4.Tier, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3">
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding DeleteProfile4Command}" Margin="3,3,3,3" Content="Delete" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Command="{Binding CopyProfile4Command}" Margin="3,3,3,3" Content="Copy to PC" Height="22" Width="90" Visibility="{Binding Quadrant2SignedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+            
+            <Rectangle  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Fill="Blue" Height="2"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+                <Button Style="{StaticResource ThemeButtonStyle}" Content="Sign In All" Command="{Binding SignInAllCommand}" Margin="3,3,3,3" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Content="Sign Out All" Command="{Binding SignOutAllCommand}" Margin="3,3,3,3" />
+                <Button Style="{StaticResource ThemeButtonStyle}" Content="Delete All Profiles" Command="{Binding DeleteAllProfilesCommand}" Margin="3,3,3,3" />
+            </StackPanel>
+            <Rectangle  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Fill="Blue" Height="2"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Xbox Profiles found on PC" Margin="3,3,3,3"/>
+                    <ListView ItemsSource="{Binding AllFoundProfiles}" DisplayMemberPath="OfflineXuid" Height="80" Width="140" Margin="3,3,3,3">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Button Content="Add Profile" Command="{Binding AddSelectedProfileCommand}" Margin="3,3,3,3" />
+                    <Button Content="Browse for Profile" Command="{Binding BrowseForProfileCommand}" Margin="3,3,3,3" />
+                </StackPanel>
+            </StackPanel>
+            <Rectangle  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Fill="Blue" Height="2"/>
+            <StackPanel Orientation="Vertical" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,3,3,3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Enter a new Gamertag, or leave empty to create a random Gamertag</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Gamertag:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Width="140" Text="{Binding CreateProfileGamerTag}" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Is Default Profile:" />
+                    <CheckBox Grid.Row="2" Grid.Column="1" Width="140" IsChecked="{Binding CreateProfileIsDefault, Mode=TwoWay}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Is Live Profile:" />
+                    <CheckBox Grid.Row="3" Grid.Column="1" Width="140" IsChecked="{Binding CreateProfileIsLive, Mode=TwoWay}" />
+                    <TextBlock Visibility="{Binding CreateProfileIsLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="0" Text="Country:" />
+                    <ComboBox Visibility="{Binding CreateProfileIsLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="4" Grid.Column="1" Width="140" ItemsSource="{Binding AllCountries}" SelectedItem="{Binding CreateProfileCountry}" Style="{StaticResource ThemeComboBoxStyle}" ItemContainerStyle="{StaticResource ThemeComboBoxItemStyle}" />
+                    <TextBlock Visibility="{Binding CreateProfileIsLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="5" Grid.Column="0" Text="Subscription Tier:" />
+                    <ComboBox Visibility="{Binding CreateProfileIsLive, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="5" Grid.Column="1" Width="140" ItemsSource="{Binding AllSubscriptionTiers}" SelectedItem="{Binding CreateProfileTier}" Style="{StaticResource ThemeComboBoxStyle}" ItemContainerStyle="{StaticResource ThemeComboBoxItemStyle}" />
+                    <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Content="Create Profile" Command="{Binding CreateProfileCommand}" Style="{StaticResource ThemeButtonStyle}" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+    
+</Window>
+

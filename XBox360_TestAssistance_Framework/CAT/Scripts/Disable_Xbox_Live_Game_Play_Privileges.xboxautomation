@@ -1,0 +1,130 @@
+launchdevdashboard
+
+// Make sure we aren't in any menu by hitting B 4 times
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+B_Button
+wait 2000
+
+// Select Tools
+X_Button
+wait 500
+
+// Press "Up" 5 times to assure we are selecting "Network Settings" on "Tools" page of Dev Dash
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+// Down twice to Xbox Live Tools
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Select Xbox Live Tools
+A_Button
+wait 500
+
+// Press Up 5 times to assure that we are on the "Test Connection to XePartnerNet" entry on "Xbox Live Tools" page of Dev Dash
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+DPadUp
+wait 500
+
+// Down 4 to Manage profiles
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Manage profiles
+A_Button
+wait 500
+
+// Choose profiles - get the top one in the list
+//		signed-in profiles are shown first
+//		alphabetic order after that
+A_Button
+wait 500
+
+// Down twice to Settings
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Select Settings
+A_Button
+wait 3000
+
+// Set Privileges
+A_Button
+wait 500
+
+// Down 6 to Live GamePlay
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+DPadDown
+wait 250
+
+// Select Live GamePlay
+A_Button
+wait 500
+
+// Select Down to Blocked
+DPadDown
+wait 500
+
+// Select Blocked
+A_Button
+wait 500

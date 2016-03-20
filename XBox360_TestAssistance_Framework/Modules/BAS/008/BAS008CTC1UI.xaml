@@ -1,0 +1,143 @@
+﻿<Grid x:Class="BAS008.BAS008CTC1UI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:BAS008"
+             Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <vm:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter"/>
+            <Style TargetType="TextBlock" x:Key="TitleField">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+        </ResourceDictionary>
+        
+    </Grid.Resources>
+    <StackPanel Orientation="Vertical">
+        <!-- Test Case Title -->
+        <TextBlock Text="CAT Module For CTC 118" Style="{StaticResource TitleField}" />
+        <!-- Module Name -->
+        <Grid Margin="5,0,0,0" >
+            <TextBlock Text="STR Game Save Dependencies " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+    <Grid Visibility="{Binding FirstPageVisibility}">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Background="{Binding DataContext.CurrentTheme.Background3, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" Margin="5,0">
+            <TextBlock TextWrapping="Wrap" Foreground="White" MaxWidth="300" >
+                <TextBlock.Text>
+                    This module will scan the currently configured game directory for executables and libraries to ensure they are all linked to the same XDK version. 
+                    If a Disc Emulated title is configured, a console must be selected.  The disc will be mounted and also scanned for executables and libraries.
+                </TextBlock.Text>
+            </TextBlock>
+            <Button Content="Begin" Width="200" Click="Begin" HorizontalAlignment="Right" Style="{StaticResource ThemeButtonStyle}"></Button>
+        </StackPanel>
+    </Grid>
+    <Grid Visibility="{Binding SecondPageVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Visibility="{Binding AnyFailed, Converter={StaticResource BooleanToVisibilityConverter}}" Text="Unapproved versions of libraries were detected!  Please review the list." />
+                <TextBlock Visibility="{Binding AnyFailed, Converter={StaticResource InvertBooleanToVisibilityConverter}}" Text="No unapproved versions of libraries were detected." />
+                <TextBlock Visibility="{Binding AnyInDebugFolder, Converter={StaticResource BooleanToVisibilityConverter}}" Text="Files found in PC directories containing the string 'debug' were excluded." />
+                <TextBlock Foreground="Red" HorizontalAlignment="Stretch">
+                    <TextBlock.Text>
+                        <MultiBinding  StringFormat="{}XDK Version currently installed: {0}">
+                            <Binding Path="XdkVersion" Mode="OneWay" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Margin="3">
+                <TextBlock Text="Select a File:" HorizontalAlignment="Stretch" Background="Black" Foreground="White"/>
+                <ListView ItemsSource="{Binding ScannedFiles}" MinHeight="30" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" 
+                      SelectionMode="Single" SelectedItem="{Binding CurrentlySelectedFile}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Foreground" Value="{Binding BadFileBackgroundColor}"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true" >
+                            <GridViewColumn DisplayMemberBinding="{Binding ShortFileName}" Header="Executable/DLL"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Border BorderBrush="Black" BorderThickness="2" Margin="3" >
+                <TextBlock TextWrapping="Wrap" Background="White" HorizontalAlignment="Stretch" MinHeight="50" VerticalAlignment="Stretch"> 
+Select an executable or dll to review from the above list.
+                </TextBlock>
+                </Border>
+            </StackPanel>
+            <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="2"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Margin="3">
+                <TextBlock Text="System Import Libraries" HorizontalAlignment="Center"/>
+                <ListView ItemsSource="{Binding CurrentSystemImportLibraries}" MinHeight="30" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Foreground" Value="{Binding ApprovedColor}"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true" >
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Component" />
+                            <GridViewColumn DisplayMemberBinding="{Binding FullVersionString}" Header="Version" />
+                            <GridViewColumn DisplayMemberBinding="{Binding MinimumVersionString}" Header="Min Version" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" Margin="3">
+                <TextBlock Text="Library Versions" HorizontalAlignment="Center"/>
+                <ListView ItemsSource="{Binding CurrentLibraryVersions}" MinHeight="30" MaxHeight="300" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Foreground" Value="{Binding ApprovedColor}"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true" >
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Component" />
+                            <GridViewColumn DisplayMemberBinding="{Binding FullVersionString}" Header="Version" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ApprovedString}" Header="Status" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1" Margin="3">
+                <TextBlock Text="Tool Versions" HorizontalAlignment="Center"/>
+                <ListView ItemsSource="{Binding CurrentToolVersions}" MinHeight="30" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Foreground" Value="{Binding ApprovedColor}"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true" >
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Component" />
+                            <GridViewColumn DisplayMemberBinding="{Binding FullVersionString}" Header="Version" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ApprovedString}" Header="Status" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            
+        
+        
+    </Grid>
+    </StackPanel>
+</Grid>

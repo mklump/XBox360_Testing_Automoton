@@ -1,0 +1,612 @@
+﻿<Grid x:Class="UI028.UI028CTC1UI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:vm="clr-namespace:UI028"
+        Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" >
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <vm:TerminologyStringConverter x:Key="TerminologyStringConverter"/>
+            <vm:LanguageToTermConverter x:Key="LanguageToTermConverter"/>
+            <vm:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter"/>
+            <Style TargetType="TextBlock" x:Key="TitleField">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Button" x:Key="ModuleButtonStyle" BasedOn="{StaticResource ThemeButtonStyle}">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+            </Style>
+            <Style TargetType="Button" x:Key="ModuleButtonStyle2" BasedOn="{StaticResource ThemeButtonStyle}">
+                <Setter Property="Width" Value="125" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+            </Style>
+            <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleButtonStyle" BasedOn="{StaticResource ThemeToggleButtonStyle}" >
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Width" Value="56"/>
+                <Setter Property="FontSize" Value="9"/>
+            </Style>
+            <Style TargetType="{x:Type Label}" x:Key="GridLabel">
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Width" Value="80"/>
+            </Style>
+            <Style TargetType="Button" x:Key="ControllerButtonStyle">
+                <Setter Property="Opacity" Value="0.2"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="border" 
+                        BorderThickness="3"
+                        Padding="{TemplateBinding Padding}" 
+                        BorderBrush="Black"
+                        Background="White"
+                        CornerRadius="10" >
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.4"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Opacity" Value="0.6"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="ControllerButtonStyleCircular">
+                <Setter Property="Opacity" Value="0.1"></Setter>
+                <Setter Property="Background" Value="Black"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="border" 
+                        BorderThickness="3"
+                        Padding="{TemplateBinding Padding}" 
+                        BorderBrush="White"
+                        Background="Black"
+                        CornerRadius="20" >
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.4"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Opacity" Value="0.6"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="GuideButtonStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="border" 
+                        BorderThickness="3"
+           
+                        BorderBrush="White"
+                        Background="Black"
+                        CornerRadius="15" >
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.4"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <!-- Test Case Title -->
+            <TextBlock Text="CAT Module For CTC 28" Style="{StaticResource TitleField}" />
+            <!-- Module Name -->
+            <Grid Margin="5,0,0,0" >
+                <TextBlock Text="UI Official Naming Standards" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Visibility="{Binding Path=OverviewPageVisibility}" MaxHeight="300">
+                <StackPanel Orientation="Vertical">
+
+                    <!-- module instructions -->
+                    <Border Style="{StaticResource InstructionsBorderStyle}" MaxWidth="600">
+                        <StackPanel Orientation="Vertical" MaxWidth="600">
+                            <Grid>
+                                <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" xml:space="preserve">
+                            This module is 28 Official Naming Standards
+                                
+                            Select the Console that is attached to your PC, and attach an Xbox controller to the PC.
+                            The controller can be used to drive all the other consoles at once.
+                        </TextBox>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Label Visibility="{Binding IsControllerConnected, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Center">Controller is Connected</Label>
+                    <Label Background="Red" HorizontalContentAlignment="Center" Visibility="{Binding IsControllerConnected, Converter={StaticResource InvertBooleanToVisibilityConverter}}">No controller was detected. Please attach a controller to your PC before continuing</Label>
+                    <Button Click="NextPage" Content="Begin" Style="{StaticResource ModuleButtonStyle}" HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Visibility="{Binding Path=Page2Visibility}">
+                <StackPanel Orientation="Vertical" MaxWidth="600">
+
+                    <!-- module instructions -->
+                    <Border Style="{StaticResource InstructionsBorderStyle}">
+                        <StackPanel Orientation="Vertical">
+                            <Label>Select any languages you wish to verify Terminology for.</Label>
+                            <Label>Next, select the same number of devkits from the list, to be configured to each of those languages.</Label>
+                            <Label>The primary devkit will remain in its current langauge.</Label>
+                        </StackPanel>
+                    </Border>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                            <CheckBox IsChecked="{Binding ChangeLanguagesChecked}">Change languages (requires Devkit reboot)</CheckBox>
+                            <CheckBox IsChecked="{Binding AllNewProfilesChecked}">Create all new profiles</CheckBox>
+                        </StackPanel>
+                        <GroupBox Header="Languages" Grid.Column="0" Grid.Row="1">
+                            <WrapPanel Width="240" VerticalAlignment="Center">
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInChineseSimplified}" >Chinese</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInChineseTraditional}" >Chinese T</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInFrench}" >French</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInGerman}" >German</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInItalian}" >Italian</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInJapanese}" >Japanese</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInKorean}" >Korean</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInDutch}" >Dutch</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInNorwegian}" >Norwegian</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInPolish}" >Polish</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInPortuguese}" >Portuguese</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInRussian}" >Russian</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInSpanish}" >Spanish</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInSwedish}" >Swedish</ToggleButton>
+                                <ToggleButton Style="{StaticResource ToggleButtonStyle}" Click="Language_Click" IsChecked="{Binding Path=TestInTurkish}" >Turkish</ToggleButton>
+                            </WrapPanel>
+                        </GroupBox>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                            <TextBlock Text="Total Languages: "></TextBlock>
+                            <TextBlock Text="{Binding Path=LanguageCount, Mode=OneWay}" Foreground="Black"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Primary Devkit:</Label>
+                                <Label Content="{Binding Path=DrivingConsole.Name}" HorizontalAlignment="Right" FontWeight="Bold"></Label>
+                            </StackPanel>
+                            <Label>Other Devkits</Label>
+                            <ListBox MinWidth="65" MinHeight="165" Margin="5"
+                                 ItemsSource="{Binding Path=AvailableConsoles}" SelectionMode="Multiple" SelectionChanged="Console_Click" 
+                                 Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }"  >
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}">
+                                        <Setter Property="Content" Value="{Binding Name}"/>
+                                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=OneWayToSource, 
+                                        NotifyOnTargetUpdated=True}"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" >
+                            <TextBlock Text="Other Devkit Count: "></TextBlock>
+                            <TextBlock Text="{Binding Path=ConsoleCount, Mode=OneWay}" Foreground="Black"/>
+                        </StackPanel>
+
+                        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" Click="NextPage" Content="Configure" Style="{StaticResource ModuleButtonStyle}"/>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Visibility="{Binding Path=Page3Visibility}">
+                <StackPanel Orientation="Vertical">
+                    <!-- wait, configuring page -->
+                    <Label Visibility="{Binding IsSetupDone, Converter={StaticResource InvertBooleanToVisibilityConverter}}" 
+                    FontSize="24" Background="{Binding DataContext.CurrentTheme.Background4, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center">Configuring Xboxes. Please Wait.</Label>
+                    <ListView ItemsSource="{Binding ObserverConsoles}" MinHeight="30" MaxWidth="500" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" Margin="0,15,0,0">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Target Configuration">
+                                <GridViewColumn DisplayMemberBinding="{Binding ConsoleName}" Header="Dev Kit" Width="100"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Installed}" Header="Installed" Width="65"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding ObservedLanguage.LanguageName}" Header="Language" Width="100"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding ProfileName}" Header="Profile" Width="120"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding SignedIn}" Header="Sign-in" Width="65"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label>Controlling Xbox:</Label>
+                        <Label Content="{Binding Path=DrivingConsole.Name}" HorizontalAlignment="Right" FontWeight="Bold"></Label>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Width="120">Controlling Profile:</Label>
+                                <Label Content="{Binding Path=ActiveProfileName}" HorizontalAlignment="Right" FontWeight="Bold"></Label>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <Label Content="{Binding Path=SetupString}" HorizontalAlignment="Center" FontStyle="Italic"></Label>
+                    <ProgressBar Height="20" Width="400" Maximum="11" Value="{Binding Path=SetupProgress}"></ProgressBar>
+                    <Button HorizontalAlignment="Center" Margin="5" Click="NextPage" Content="Next" Style="{StaticResource ModuleButtonStyle}" IsEnabled ="{Binding Path=IsSetupDone}"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Visibility="{Binding Path=Page4Visibility}" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Label>Devkits</Label>
+                            <Border BorderBrush="Black" BorderThickness="3" MinWidth="300" MaxWidth="350">
+                                <ListView ItemsSource="{Binding LanguagesWithImages}" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }"
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" 
+                                  SelectionChanged="Console_SelectionChanged">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal" IsItemsHost="True" MinHeight="150"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderBrush="Blue" BorderThickness="3" Grid.Row="0">
+                                                    <Image Width="90" Height="50" Stretch="Fill" Source="{Binding Path=ImageContents}" ToolTipService.ShowDuration="1440000">
+                                                        <Image.ToolTip>
+                                                            <Grid>
+                                                                <Image Width="900" Height="506" Stretch="Fill" Source="{Binding Path=ImageContents}"/>
+                                                                <TextBlock Text="{Binding Path=ImageName}" FontSize="18" FontWeight="Bold" FontFamily="Courier New" FontStyle="Italic"
+                                                                    Background="White" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="100"/>
+                                                            </Grid>
+                                                        </Image.ToolTip>
+                                                        <Image.ContextMenu>
+                                                            <ContextMenu>
+                                                                <MenuItem Header="Control this Devkit" Command="{Binding Path=BindOneCommand}" CommandParameter="{Binding}" />
+                                                            </ContextMenu>
+                                                        </Image.ContextMenu>
+                                                    </Image>
+                                                </Border>
+                                                <!-- <Label Grid.Row="1" Content="{Binding Path=ImageName}"></Label> -->
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="3">
+                            <StackPanel Orientation="Horizontal" Margin="3">
+                                <Label VerticalContentAlignment="Center">Currently Controlling Console</Label>
+                                <Label Content="{Binding AdjustConsoleName}" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center"></Label>
+                            </StackPanel>
+                            <TextBlock Margin="3" Background="White" xml:space="preserve" MaxWidth="350" TextWrapping="Wrap">Please ensure that all devkits are "in sync". 
+In order to proceed, all devkits must be in the same state.
+Please select any kits that are out of sync with your main devkit, this will allow you to control ONLY THAT DEVKIT to get it back "in sync" with the others.
+Once all machines are in the same state, click next to continue.</TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource ThemeButtonStyle}" Width="150" Margin="0,0,15,0" Click="Capture_Click" ToolTip="Use this to pull screen shots from observer devkits.">Capture Screen Images</Button>
+                        <Button Click="BackPage" Content="Back" Style="{StaticResource ModuleButtonStyle}" />
+                        <Button Click="NextPage" Content="Next" Style="{StaticResource ModuleButtonStyle}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Grid Visibility="{Binding Path=Page5Visibility}">
+         
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+                        <!-- check-list page -->
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="350"></ColumnDefinition>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Margin="20,0,0,0">Screen Captures</Label>
+                            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="3" Height="275" MinWidth="300" MaxWidth="310">
+                                    <ListView ItemsSource="{Binding LanguagesWithImages}" Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="275" MaxWidth="310">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" IsItemsHost="True" MinHeight="150"/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Border BorderBrush="Blue" BorderThickness="3">
+                                                        <Image Width="90" Height="50" Stretch="Fill" Source="{Binding Path=ImageContents}" ToolTipService.ShowDuration="1440000">
+                                                            <Image.ToolTip>
+                                                                 <Grid>
+                                                                     <Image Width="900" Height="506" Stretch="Fill" Source="{Binding Path=ImageContents}" />
+                                                                     <TextBlock Text="{Binding Path=ImageName}" FontSize="18" FontWeight="Bold" FontFamily="Courier New" FontStyle="Italic"
+                                                                         Background="White" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="100"/>
+                                                                 </Grid>
+                                                            </Image.ToolTip>
+                                                            <Image.ContextMenu>
+                                                                <ContextMenu>
+                                                                    <MenuItem Header="Refresh" Command="{Binding Path=RefreshCommand}" CommandParameter="{Binding}" />
+                                                                </ContextMenu>
+                                                            </Image.ContextMenu>
+                                                        </Image>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Border>
+                            </Grid>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0,0,15,0">
+
+                                <GroupBox Header="Terminology Search" MaxHeight="300" Margin="3">
+                                    <!-- Terminology display -->
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Filter:</TextBlock>
+                                        <TextBox Style="{StaticResource ThemeTextBoxStyle}" Text="{Binding TerminologyFilterText}" TextChanged="FilterChanged"></TextBox>
+                                        <ListView SelectionMode="Single"
+                    Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }"
+                    SelectionChanged="TermChanged"
+                    Height="100">
+                                            <ListView.ItemsSource>
+                                                <MultiBinding Converter="{StaticResource LanguageToTermConverter}">
+                                                    <Binding Path="CurrentTerminologyArea.TermsByLanguage" Mode="OneWay" />
+                                                    <Binding Path="CurrentTerminologyLanguage" />
+                                                </MultiBinding>
+                                            </ListView.ItemsSource>
+
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListViewItem}">
+                                                    <Setter Property="IsSelected" Value="{Binding Value.IsSelected}" />
+                                                    <Setter Property="Visibility" Value="{Binding Value.MatchesFilter, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                    <Setter Property="Content">
+                                                        <Setter.Value>
+                                                            <MultiBinding Converter="{StaticResource TerminologyStringConverter}">
+                                                                <Binding Path="Key" Mode="OneWay" />
+                                                                <Binding Path="Value.TerminologyArea.Name" Mode="OneWay" />
+                                                            </MultiBinding>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+
+                                        </ListView>
+                                        <TextBlock>Description:</TextBlock>
+                                        <TextBlock Text="{Binding CurrentTerm.Description}" Height="40" TextWrapping="Wrap" MaxWidth="400"></TextBlock>
+                                    </StackPanel>
+                                </GroupBox>
+
+
+
+
+                                <StackPanel Orientation="Horizontal" Margin="3,0">
+                                    <TextBlock >Display terms in:</TextBlock>
+                                    <ComboBox Style="{StaticResource ThemeComboBoxStyle}" Margin="3"  ItemsSource="{Binding TerminologyLanguages}" SelectedItem="{Binding CurrentTerminologyLanguage}" HorizontalAlignment="Stretch" >
+                                        <ComboBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}" />
+                                        </ComboBox.ItemContainerStyle>
+                                    </ComboBox>
+                                </StackPanel>
+                                <ListView SelectionMode="Single" Margin="3"
+                    Background="{Binding DataContext.CurrentTheme.Background1, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }"
+                    ItemsSource="{Binding CurrentTerm.Terms}" Height="100" MaxWidth="400">
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <MultiBinding Converter="{StaticResource TerminologyStringConverter}">
+                                                        <Binding Path="Value" Mode="OneWay" />
+                                                        <Binding Path="Key" Mode="OneWay" />
+                                                    </MultiBinding>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                <Button Style="{StaticResource ThemeButtonStyle}" Width="150" Margin="3" Click="Capture_Click" ToolTip="Use this to pull screen shots from observer devkits.">Capture Screen Images</Button>
+                                <Button Style="{StaticResource ThemeButtonStyle}" Width="150" Margin="3"  Click="SaveSnapshots_Click" ToolTip="Save images with proper identification" >Save Images</Button>
+                                <Button Grid.Column="1" Grid.Row="1" Click="NextPage" Content="Back" HorizontalAlignment="Center" Style="{StaticResource ModuleButtonStyle2}" Visibility="{Binding Path=Page5Visibility}" Margin="3"/>
+                            </StackPanel>
+
+                        </Grid>
+                        <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" xml:space="preserve" Margin="5" Padding="0" MaxWidth="700">Visit all areas of the title to verify that all terminology is used properly.
+Observer devkits will be driven simultaneously.  As you encounter each term to be checked, click "Capture Screen Images" to verify other languages' compliance.  You can click "Save Images" to store a copy of any 
+images you capture for bugging or research.
+In addition, use the Terminology Search to look up the proper appearance of each term across all languages.
+If any observer devkits become out of "sync" with the rest, use the "Back" button to return to the previous page to correct it.
+                </TextBox>
+                        <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" MaxWidth="700" Margin="5">
+                            All unsupported languages should default to English.
+                        </TextBox>
+
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Visibility="{Binding VirtualControllerVisibility}"  HorizontalAlignment="Center">
+                                <Grid>
+                                    <ToggleButton x:Name="keyboardToggleButton" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom">Shortcut Keys</ToggleButton>
+                                    <Image Source="Images/controller2.png" Height="300" ></Image>
+                                    <Grid Margin="431,96,155,131" Visibility="{Binding IsChecked, ElementName=keyboardToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                                        <Grid Height="30" Width="30" Margin="44,0,36,59" Background="Yellow">
+                                            <Canvas>
+                                                <Line 
+                                            X1="1" Y1="15"
+                                            X2="15" Y2="1"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="15" Y1="1"
+                                            X2="30" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="15" Y1="1"
+                                            X2="15" Y2="30"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+
+                                            </Canvas>
+                                        </Grid>
+                                        <Grid Height="30" Width="30" Margin="0,35,70,30" Background="LightBlue">
+                                            <Canvas>
+                                                <Line 
+                                            X1="1" Y1="15"
+                                            X2="15" Y2="1"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="1" Y1="15"
+                                            X2="15" Y2="30"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="1" Y1="15"
+                                            X2="30" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+
+                                            </Canvas>
+                                        </Grid>
+                                        <Grid Height="30" Width="30" Margin="35,67,45,2" Background="LightGreen">
+                                            <Canvas>
+                                                <Line 
+                                            X1="15" Y1="1"
+                                            X2="15" Y2="30"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="15" Y1="30"
+                                            X2="1" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="15" Y1="30"
+                                            X2="30" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+
+
+                                            </Canvas>
+                                        </Grid>
+                                        <Grid Height="30" Width="30" Margin="74,37,6,32" Background="Red">
+                                            <Canvas>
+                                                <Line 
+                                            X1="1" Y1="15"
+                                            X2="30" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="30" Y1="15"
+                                            X2="15" Y2="1"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+                                                <Line 
+                                            X1="15" Y1="30"
+                                            X2="30" Y2="15"
+                                            Stroke="Black"
+                                            StrokeThickness="1" />
+
+
+                                            </Canvas>
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid Height="75" Width="75" Visibility="{Binding IsChecked, ElementName=keyboardToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="238,161,358,65" >
+                                        <Grid Height="20" Width="20"  Background="White" Margin="0,30,55,22"  >
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">A</TextBlock>
+                                        </Grid>
+
+                                        <Grid Height="20" Width="20"  Background="White" RenderTransformOrigin="0.45,0.45" Margin="25,10,30,45">
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">W</TextBlock>
+                                        </Grid>
+                                        <Grid Height="20" Width="20"  Background="White" Margin="54,32,1,23" >
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold">D</TextBlock>
+                                        </Grid>
+                                        <Grid Height="20" Width="20"  Background="White" Margin="25,55,30,0"  >
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" >S</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                <Button Content="_a" Height="30" Width="25" RenderTransformOrigin="-3.96,3.217" Margin="240,200,417,91" Click="Left_Click" Style="{StaticResource ControllerButtonStyle}" Foreground="Transparent"/>
+                                <Button Content="_s" Height="25" Width="30" RenderTransformOrigin="-3.96,3.217" Margin="270,225,391,76" Click="Down_Click" Style="{StaticResource ControllerButtonStyle}" Foreground="Transparent"/>
+                                <Button Content="_d" Height="30" Width="25" RenderTransformOrigin="-3.96,3.217" Margin="295,200,362,91" Click="Right_Click" Style="{StaticResource ControllerButtonStyle}" Foreground="Transparent"/>
+                                <Button Content="_w" Height="25" Width="30" RenderTransformOrigin="-3.96,3.217" Margin="265,178,392,113" Click="Up_Click" Style="{StaticResource ControllerButtonStyle}" Foreground="Transparent"/>
+                                    <Button Height="20" Width="20" RenderTransformOrigin="-3.96,3.217" Margin="281,123,375,157" Click="Back_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                    <Button Height="20" Width="20" RenderTransformOrigin="-3.96,3.217" Margin="384,123,272,157" Click="Start_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                    <Button Content="_4" Height="40" Width="40" RenderTransformOrigin="-3.96,3.217" Margin="431,123,225,157" Click="X_Click" Style="{StaticResource ControllerButtonStyleCircular}" AutomationProperties.AcceleratorKey="Left"/>
+                                    <Button Content="_8" Height="40" Width="40" RenderTransformOrigin="-3.96,3.217" Margin="471,93,185,187" Click="Y_Click" Style="{StaticResource ControllerButtonStyleCircular}"/>
+                                    <Button Content="_6" Height="40" Width="40" RenderTransformOrigin="-3.96,3.217" Margin="501,123,155,157" Click="B_Click" Style="{StaticResource ControllerButtonStyleCircular}"/>
+                                    <Button Content="_2" Height="40" Width="40" RenderTransformOrigin="-3.96,3.217" Margin="459,152,197,128" Click="A_Click" Style="{StaticResource ControllerButtonStyleCircular}" AutomationProperties.AcceleratorKey="Down"/>
+                                    <Button Click="Guide_Click" Height="60" RenderTransformOrigin="0.564,-0.478" Margin="10,110,0,140" Style="{StaticResource GuideButtonStyle}">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="Images\1stquad.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Button RenderTransformOrigin="-3.96,3.217" Margin="169,47,444,242" Click="LeftShoulder_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                    <Button RenderTransformOrigin="-3.96,3.217" Margin="455,47,158,242" Click="RightShoulder_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                    <Button RenderTransformOrigin="-3.96,3.217" Margin="210,15,444,274" Click="LeftTrigger_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                    <Button RenderTransformOrigin="-3.96,3.217" Margin="445,15,209,274" Click="RightTrigger_Click" Style="{StaticResource ControllerButtonStyle}"/>
+                                </Grid>
+                            </StackPanel>
+
+
+                        </StackPanel>
+                    </StackPanel>
+           
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+    <!--for design purposes-->
+</Grid>

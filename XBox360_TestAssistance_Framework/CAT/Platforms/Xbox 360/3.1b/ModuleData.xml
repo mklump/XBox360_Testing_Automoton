@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tables>
+  <Module>
+    <assembly>BAS001.dll</assembly>
+    <class>BAS001.BAS001CTC1</class>
+    <short_description>Stability Module</short_description>
+    <category>BAS</category>
+    <tcr>1</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for BAS001</detail>
+  </Module>
+  <Module>
+    <assembly>BAS008.dll</assembly>
+    <class>BAS008.BAS008CTC1</class>
+    <short_description>XDK Version Module</short_description>
+    <category>BAS</category>
+    <tcr>8</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for BAS008</detail>
+  </Module>
+  <Module>
+    <assembly>BAS014.dll</assembly>
+    <class>BAS014.BAS014</class>
+    <short_description>Debug Output Module</short_description>
+    <category>BAS</category>
+    <tcr>14</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for BAS014</detail>
+  </Module>
+  <Module>
+    <assembly>BAS015.dll</assembly>
+    <class>BAS015.BAS015</class>
+    <short_description>Sign-in Changes Module</short_description>
+    <category>BAS</category>
+    <tcr>15</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for BAS015</detail>
+  </Module>
+  <Module>
+    <assembly>STR050.dll</assembly>
+    <class>STR050.STR050CTC2</class>
+    <short_description>Game Data Storage Module</short_description>
+    <category>STR</category>
+    <tcr>50</tcr>
+    <testcase>CTC 2</testcase>
+    <detail>placeholder details for STR050</detail>
+  </Module>
+  <Module>
+    <assembly>STR051.dll</assembly>
+    <class>STR051.STR051CTC1</class>
+    <short_description>Game Data Storage Device Change Module</short_description>
+    <category>STR</category>
+    <tcr>51</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for STR051</detail>
+  </Module>
+  <Module>
+    <assembly>STR118.dll</assembly>
+    <class>STR118.STR118CTC1</class>
+    <short_description>Game Save Dependencies Module</short_description>
+    <category>STR</category>
+    <tcr>118</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for STR118</detail>
+  </Module>
+  <Module>
+    <assembly>GP070.dll</assembly>
+    <class>GP070.GP070CTC1</class>
+    <short_description>Game Play Rich Presence - Multiplayer: 70 Rich Presence</short_description>
+    <category>GP</category>
+    <tcr>70</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for GP070</detail>
+  </Module>
+  <Module>
+    <assembly>VID117.dll</assembly>
+    <class>VID117.VID117CTC1</class>
+    <short_description>Video Mode Support</short_description>
+    <category>VID</category>
+    <tcr>117</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for VID117</detail>
+  </Module>
+  <Module>
+    <assembly>MPS086.dll</assembly>
+    <class>MPS086.MPS086CTC1</class>
+    <short_description>User Interface No Multiplayer</short_description>
+    <category>MPS</category>
+    <tcr>086</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for MPS086</detail>
+  </Module>
+  <Module>
+    <assembly>MPS115.dll</assembly>
+    <class>MPS115.MPS115CTC1</class>
+    <short_description>MPS Game Invitations</short_description>
+    <category>MPS</category>
+    <tcr>115</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for MPS115</detail>
+  </Module>
+  <Module>
+    <assembly>UI028.dll</assembly>
+    <class>UI028.UI028CTC1</class>
+    <short_description>UI Official Naming Standards</short_description>
+    <category>UI</category>
+    <tcr>028</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for UI Official Naming Standards </detail>
+  </Module>
+  <Module>
+    <assembly>PER033.dll</assembly>
+    <class>PER033.PER033CTC1</class>
+    <short_description>PER Controller Selection</short_description>
+    <category>PER</category>
+    <tcr>033</tcr>
+    <testcase>CTC 1</testcase>
+    <detail>placeholder details for PER Controller Selection </detail>
+  </Module>
+</Tables>

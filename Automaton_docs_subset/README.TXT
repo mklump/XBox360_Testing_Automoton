@@ -1,0 +1,3 @@
+These 5 design overview documents and the mockScreens_jpg folder subset represent a high level view of the end functional result and initial User Interface designs for this XBox 360 assistance testing framework.
+Again much, much thanks to Kevin, Colen, Rose, Experis, and Lyndon for leading us in this valiant push forward.
+These design documents are only a smaller subset of the larger overall design for purposes of information hiding.

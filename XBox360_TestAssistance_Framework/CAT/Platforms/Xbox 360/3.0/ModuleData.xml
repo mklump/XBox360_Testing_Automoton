@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tables>
+    <Module>
+      <assembly>Module14.exe</assembly>
+      <short_description>Debug Output Module</short_description>
+      <category>BAS</category>
+      <tcr>14</tcr>
+      <testcase>CTC 1</testcase>
+    </Module>
+    <Module>
+      <assembly>Module14b.exe</assembly>
+      <short_description>Debug Output Module part 2</short_description>
+      <category>BAS</category>
+      <tcr>14</tcr>
+      <testcase>CTC 2</testcase>
+    </Module>
+    <Module>
+      <assembly>Module1.exe</assembly>
+      <short_description>Stability Module</short_description>
+      <category>BAS</category>
+      <tcr>1</tcr>
+      <testcase>CTC 1</testcase>
+    </Module>
+</Tables>

@@ -1,0 +1,227 @@
+﻿<Grid x:Class="BAS015.BAS015UI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:BAS015"
+        Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" >
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <vm:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter"/>
+        <vm:ConsoleProfileSelectedVisibilityConverter x:Key="ConsoleProfileSelectedVisibilityConverter" />
+        <vm:InvertBoolConverter x:Key="InvertBoolConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+    
+    <!-- Page 1 Instructions -->
+    <Grid Visibility="{Binding Path=FirstPageVisibility}">
+        <StackPanel Orientation="Vertical">
+            <!-- Test Case Title -->
+            <TextBlock Text="CAT Module for CTC 015" Background="Black" Foreground="White" HorizontalAlignment="Stretch" TextAlignment="Center" />
+            <!-- Module Name -->
+            <Grid Margin="5,0,0,0" >
+                <TextBlock Text="BAS Sign-in Changes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Border BorderBrush="#FF828790" BorderThickness="2" >
+                <StackPanel Orientation="Vertical" >
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="This test will sign Xbox 360 profiles in and out while you play through the title."
+                        TextWrapping="Wrap"  MaxWidth="504"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="There are three scenarios." Visibility="Visible"
+                        TextWrapping="Wrap"  MaxWidth="504"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="Play through three times. Visit all areas of the game. This includes navigating all menus and submenus, watching all cutscenes and cinematics, and playing all levels. If the game supports online play, play all Xbox LIVE multiplayer session types. If the game supports system link, play all system link session types. Save and load all game save types. Download any and all available in-game content."
+                             TextWrapping="Wrap"  MaxWidth="504" Visibility="Collapsed"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="1) Play with one profile. The profile will sign in and out. You may be returned to the main menu at sign out." 
+                             TextWrapping="Wrap"  MaxWidth="504"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="2) Play with two profiles initially signed in. Occasionally one profile will sign out. A random profile will sign back in. At most two profiles will be signed in at any time."
+                             TextWrapping="Wrap"  MaxWidth="504"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="3) Play with four profiles initially signed in. The main profile will sign out occasionally. The other three profiles will sign in and out frequently"
+                             TextWrapping="Wrap"  MaxWidth="504"/>
+                    <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" Text="Sign in and sign out can be controlled manually as desired."
+                        TextWrapping="Wrap"  MaxWidth="504"/>
+                    <Label Foreground="#FFCB1F1F" HorizontalAlignment="Center">Select an Xbox</Label>
+                </StackPanel>
+            </Border>
+            <Button Style="{StaticResource ThemeButtonStyle}" Content="Next" Width="100" Height="50" Click="ClickNext" HorizontalAlignment="Right" ></Button>
+        </StackPanel>
+    </Grid>
+
+    <!-- Page 2 Profile Control -->
+    <Grid Visibility="{Binding Path=SecondPageVisibility}" Margin="0,-1,0,1">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <!-- Test Case Title -->
+            <TextBlock Text="CAT Module for CTC 015" Background="Black" Foreground="White" HorizontalAlignment="Stretch" TextAlignment="Center" />
+            <!-- Module Name -->
+            <Grid Margin="5,0,0,0" >
+                <TextBlock Text="BAS Sign-in Changes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Border BorderThickness="3" BorderBrush="Black" >
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="125"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="1" Grid.Column="0" Click="Delete_1" MinHeight="20" Width="20" IsEnabled="{Binding Path=Profile1SignedIn, Converter={StaticResource InvertBoolConverter} }">
+                        <Image Source="Images/red_X.png" ToolTip="Delete Profile"></Image>
+                    </Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="2" Grid.Column="0" Click="Delete_2" MinHeight="20" Width="20" IsEnabled="{Binding Path=Profile2SignedIn, Converter={StaticResource InvertBoolConverter} }">
+                        <Image Source="Images/red_X.png" ToolTip="Delete Profile"></Image>
+                    </Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="3" Grid.Column="0" Click="Delete_3" MinHeight="20" Width="20" IsEnabled="{Binding Path=Profile3SignedIn, Converter={StaticResource InvertBoolConverter} }">
+                        <Image Source="Images/red_X.png" ToolTip="Delete Profile"></Image>
+                    </Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="4" Grid.Column="0" Click="Delete_4" MinHeight="20" Width="20" IsEnabled="{Binding Path=Profile4SignedIn, Converter={StaticResource InvertBoolConverter} }">
+                        <Image Source="Images/red_X.png" ToolTip="Delete Profile"></Image>
+                    </Button>
+                <Image Grid.Row="1" Grid.Column="1" Source="Images/1stquad.png" ></Image>
+                <Image Grid.Row="2" Grid.Column="1" Source="Images/2ndquad.png" ></Image>
+                <Image Grid.Row="3" Grid.Column="1" Source="Images/3rdquad.png" ></Image>
+                <Image Grid.Row="4" Grid.Column="1" Source="Images/4thquad.png" ></Image>
+
+                    <Label  Grid.Row="0" Grid.Column="2" Content="Profile" HorizontalAlignment="Center"/>
+                    <ComboBox IsTextSearchEnabled ="False" Grid.Row="1" Grid.Column="2" SelectedItem="{Binding Profile1, Mode=TwoWay}" ItemsSource="{Binding AllProfiles}" DisplayMemberPath="Profile.Gamertag"
+                           MinWidth="140" SelectionChanged="Selection_Changed1" VerticalAlignment="Center" ToolTip="Quadrant 1"
+                        IsEnabled="{Binding Profile1SignedIn, Converter={StaticResource InvertBoolConverter} }" 
+                             Style="{StaticResource ThemeComboBoxStyle}">
+
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                            <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=1 }"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    
+                    
+                </ComboBox>
+                    <ComboBox IsTextSearchEnabled ="False" Grid.Row="2" Grid.Column="2" SelectedItem="{Binding Profile2, Mode=TwoWay}" ItemsSource="{Binding AllProfiles}" DisplayMemberPath="Profile.Gamertag"
+                          IsEnabled="{Binding Profile2SignedIn, Converter={StaticResource InvertBoolConverter} }" MinWidth="140" SelectionChanged="Selection_Changed2" VerticalAlignment="Center" ToolTip="Quadrant 2"
+                              Style="{StaticResource ThemeComboBoxStyle}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                      <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=2 }"/>
+                    </Style>
+                  </ComboBox.ItemContainerStyle>
+
+                    
+                </ComboBox>
+                    <ComboBox IsTextSearchEnabled ="False" Grid.Row="3" Grid.Column="2" SelectedItem="{Binding Profile3, Mode=TwoWay}" ItemsSource="{Binding AllProfiles}" DisplayMemberPath="Profile.Gamertag"
+                          IsEnabled="{Binding Profile3SignedIn, Converter={StaticResource InvertBoolConverter} }" MinWidth="140" SelectionChanged="Selection_Changed3" VerticalAlignment="Center" ToolTip="Quadrant 3"
+                             Style="{StaticResource ThemeComboBoxStyle}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                      <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=3 }"/>
+                    </Style>
+                  </ComboBox.ItemContainerStyle>
+
+                    
+                </ComboBox>
+                    <ComboBox IsTextSearchEnabled ="False" Grid.Row="4" Grid.Column="2" SelectedItem="{Binding Profile4, Mode=TwoWay}" ItemsSource="{Binding AllProfiles}" DisplayMemberPath="Profile.Gamertag"
+                          IsEnabled="{Binding Profile4SignedIn, Converter={StaticResource InvertBoolConverter} }" MinWidth="140" SelectionChanged="Selection_Changed4" VerticalAlignment="Center" ToolTip="Quadrant 4"
+                             Style="{StaticResource ThemeComboBoxStyle}">
+                        
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ThemeComboBoxItemStyle}">
+                      <Setter Property="Visibility" Value="{Binding SelectedInComboBoxIndex,
+                                Converter={StaticResource ConsoleProfileSelectedVisibilityConverter},
+                                ConverterParameter=4 }"/>
+                    </Style>
+                  </ComboBox.ItemContainerStyle>
+
+                </ComboBox>
+
+                <Label  Grid.Row="0" Grid.Column="3" Content="Sign-in / Sign-out" HorizontalAlignment="Center"/>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="1" Grid.Column="3" Click="Sign_1" Content="Sign In _1"  IsEnabled="{Binding Profile1Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile1SignedIn, Converter={StaticResource InvertBooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="1" Grid.Column="3" Click="Sign_1" Content="Sign Out _1" IsEnabled="{Binding Profile1Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile1SignedIn, Converter={StaticResource BooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="2" Grid.Column="3" Click="Sign_2" Content="Sign In _2"  IsEnabled="{Binding Profile2Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile2SignedIn, Converter={StaticResource InvertBooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="2" Grid.Column="3" Click="Sign_2" Content="Sign Out _2" IsEnabled="{Binding Profile2Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile2SignedIn, Converter={StaticResource BooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="3" Grid.Column="3" Click="Sign_3" Content="Sign In _3"  IsEnabled="{Binding Profile3Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile3SignedIn, Converter={StaticResource InvertBooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="3" Grid.Column="3" Click="Sign_3" Content="Sign Out _3" IsEnabled="{Binding Profile3Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile3SignedIn, Converter={StaticResource BooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="4" Grid.Column="3" Click="Sign_4" Content="Sign In _4"  IsEnabled="{Binding Profile4Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile4SignedIn, Converter={StaticResource InvertBooleanToVisibilityConverter} }"></Button>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Grid.Row="5" Grid.Column="3" Click="Sign_4" Content="Sign Out _4" IsEnabled="{Binding Profile4Enabled}" Height="22" Width="90" Visibility="{Binding Path=Profile4SignedIn, Converter={StaticResource BooleanToVisibilityConverter} }"></Button>
+                
+                <Label Grid.Row="0" Grid.Column="4" Content="State" HorizontalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="4" IsEnabled="{Binding Profile1Enabled}" Content="{Binding Profile1State}" VerticalContentAlignment="Center"></Label>
+                <Label Grid.Row="2" Grid.Column="4" IsEnabled="{Binding Profile2Enabled}" Content="{Binding Profile2State}" VerticalContentAlignment="Center"></Label>
+                <Label Grid.Row="3" Grid.Column="4" IsEnabled="{Binding Profile3Enabled}" Content="{Binding Profile3State}" VerticalContentAlignment="Center"></Label>
+                <Label Grid.Row="4" Grid.Column="4" IsEnabled="{Binding Profile4Enabled}" Content="{Binding Profile4State}" VerticalContentAlignment="Center"></Label>
+
+                <Label Grid.Row="0" Grid.Column="5" Content="Auto" HorizontalAlignment="Center"/>
+                <CheckBox Grid.Row="1" Grid.Column="5" IsEnabled="{Binding Profile1Enabled}" IsChecked="{Binding Profile1Auto}" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="5" IsEnabled="{Binding Profile2Enabled}" IsChecked="{Binding Profile2Auto}" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                <CheckBox Grid.Row="3" Grid.Column="5" IsEnabled="{Binding Profile3Enabled}" IsChecked="{Binding Profile3Auto}" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                <CheckBox Grid.Row="4" Grid.Column="5" IsEnabled="{Binding Profile4Enabled}" IsChecked="{Binding Profile4Auto}" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+            </Grid>
+            </Border>
+
+            <!-- Auto Sign-in Sign-out -->
+            <GroupBox Margin="10" HorizontalAlignment="Stretch">
+                <GroupBox.Header>Auto Mode</GroupBox.Header>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                     <StackPanel Orientation="Horizontal">
+                         <Label HorizontalAlignment="Left">Interval (in seconds)</Label>
+                        <TextBox Text="{Binding SecondsAuto}" Height="20" MinWidth="20" Margin="6,0,130,0" Style="{StaticResource ThemeTextBoxStyle}" />
+                        <ToggleButton Click="Auto_Mode" IsChecked="{Binding AutoMode.IsEnabled, Mode=TwoWay}" HorizontalAlignment="Right" Width="125">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ThemeToggleButtonStyle}">
+                                    <Setter Property="Content" Value="Engage"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Content" Value="Disengage"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+                    </StackPanel>
+                    <Label Content="Auto-Mode is On" Visibility="{Binding AutoMode.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF12E812" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="125"></Label>
+                </StackPanel>
+            </GroupBox>
+            <!-- Sign Multiple -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Style="{StaticResource ThemeButtonStyle}" Click="SignOut_All" MinWidth="80" Margin="0,0,30,0">Sign-out All</Button>
+                <Button Style="{StaticResource ThemeButtonStyle}" Click="SignIn_All" MinWidth="80">Sign-in All</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Total Sign-outs"></Label>
+                <Label Content="{Binding TotalSignOuts}"></Label>
+                <Label Content="Test Total Sign-ins"></Label>
+                <Label Content="{Binding TotalSignIns}"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+
+                <!-- Create Profiles -->
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,20">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Visibility="Collapsed" HorizontalAlignment="Center">Number of profiles to create</Label>
+                        <TextBox Visibility="Collapsed" Text="{Binding NumberOfProfilesToCreate}" MinWidth="20" Height="20" Style="{StaticResource ThemeTextBoxStyle}"/>
+                    </StackPanel>
+                    <Button Style="{StaticResource ThemeButtonStyle}" Width="125" HorizontalAlignment="Center" Click="Create_Click" Margin="5">Create Profile</Button>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Grid>
+

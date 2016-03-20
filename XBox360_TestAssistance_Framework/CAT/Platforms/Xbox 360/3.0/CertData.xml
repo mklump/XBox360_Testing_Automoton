@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tables>
+  <TCRDefinition>
+    <tcr_id>1</tcr_id>
+    <short_description>TCR # 001 BAS Game Stability</short_description>
+    <category>BAS</category>
+    <requirements>
+      On a functional console, the game must not enter an extended unresponsive state, cause unintentional loss of player data, crash, or cause an unintended reboot of the machine.
+      </requirements>
+    <intent>
+      Console game players expect that console games just work. Games that crash or hang or lose player progress reflect poorly on the Xbox 360 experience.
+      </intent>
+    <remarks></remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>14</tcr_id>
+    <short_description>TCR # 014 BAS Debug Output</short_description>
+    <category>BAS</category>
+    <requirements>Games must not output debug information via the network, on-screen messages, or a file on any storage device.</requirements>
+    <intent>Output of game debug and/or testing information in any medium can jeopardize the security of the platform, and risk customer privacy. Consumers expect that the game console will not store or transmit hidden data that is not otherwise relevant to the gameplay experience.
+    </intent>
+    <remarks>Games must not call the OutputDebugString function in retail builds.</remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>15</tcr_id>
+    <short_description>TCR # 015 BAS Sign-in Changes</short_description>
+    <category>BAS</category>
+    <requirements>Games must properly detect and handle player profiles signing in or out in all areas of the game.</requirements>
+    <intent>The Xbox Guide allows players to sign in and out of player profiles at all times. Game state should always be associated with the correct profile.
+    </intent>
+    <remarks>Players may sign in or out at any time via the Xbox Guide. The console issues an XN_SYS_SIGNINCHANGED system notification when this occurs. 
+      In addition, games may consult the XUserGetSigninState function. It is sufficient to return to the main menu if the game cannot update its game state to match the new sign-in state. Players may also be signed out of Xbox LIVE because of a duplicate sign-in. Single-player modes that do not rely on Xbox LIVE services can generally ignore Xbox LIVE sign-in changes.
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>50</tcr_id>
+    <short_description>TCR # 050 STR Game Data Storage </short_description>
+    <category>STR</category>
+    <requirements>
+      Games must provide an option that allows the player to select any available storage device for saving game data. If no device is selected, the game must notify the player that no game data will be saved. The notification must occur before any potential data loss.
+      </requirements>
+    <intent>
+      Players want to be able to save data to any connected storage device. Players also want to know when their game progress/state is not going to be saved.
+      </intent>
+    <remarks>
+      Players select a storage device from the Xbox Guide device selector UI. The device selector allows the player to only select storage devices that have free space greater than or equal to the number of bytes the game specifies. For details, see the XShowDeviceSelectorUI function or, for Kinect-enabled titles, XShowNuiDeviceSelectorUI.
+      Game data includes game saves, rosters, snapshots, and so on.
+      Games may automatically load previous saved game data or select the available storage device when only one storage device is present. Games are not required to provide access to the device selector when only one device is present.
+      </remarks>
+    <exemptions>
+      Games that do not support saves or only store data in the player's profile using the XUserWriteProfileSettings function are exempt from this requirement.
+      </exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>51</tcr_id>
+    <short_description>TCR # 051 STR Game Data Storage Device Change </short_description>
+    <category>STR</category>
+    <requirements>
+      Titles must notify the player if the in-use storage device is unavailable.
+      </requirements>
+    <intent>
+      Players want to know when their game progress or game state will not be saved.
+      </intent>
+    <remarks>
+      Titles may wait to display a message until an interactive state is reached or until the next time the game attempts to access the storage device. For example, if the storage device is removed during a cinematic, the game may wait until after the cinematic finishes before displaying the message to the player. If the storage device is removed during gameplay, the title may wait until the next save attempt before displaying the message to the player.
+
+      One or more of the following are acceptable actions for a title to take when notifying the player:
+
+      Allow the player to reconnect the storage device and continue gameplay with saving.
+      Allow the player to continue gameplay without saving.
+      Allow the player to exit from the game to a title menu.
+      Allow the player to select a different storage device and continue gameplay with saving (by calling XShowDeviceSelectorUI or XShowNuiDeviceSelectorUI). 
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>70</tcr_id>
+    <short_description>TCR # 070 GP Rich Presence </short_description>
+    <category>GP</category>
+    <requirements>
+      In active gameplay, games must update presence information. Presence information must accurately reflect the player's state.
+      </requirements>
+    <intent>
+      Players expect presence information to be updated in real time, so that they may make informed decisions about important gameplay scenarios, such as sending game invitations.
+      </intent>
+    <remarks>
+       For example, inactive players must not have the presence information of an active player.
+      Games can use a default rich presence such as idle for profiles not in active gameplay.
+      Games use the XUserSetContext and XUserSetProperty functions to fulfill this requirement.
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>86</tcr_id>
+    <short_description>TCR # 086 MPS No Multiplayer </short_description>
+    <category>MPS</category>
+    <requirements>
+      Games must not allow multiplayer play when the multiplayer privilege is turned off.
+      </requirements>
+    <intent>
+      Maintain the integrity of the privilege system. Players who turn off multiplayer play expect the game to behave accordingly.
+      </intent>
+    <remarks>
+      The system automatically prevents establishing sessions between consoles when the multiplayer privilege is turned off. In cases in which a game connects to a non–Xbox LIVE game server, the game must enforce this requirement. Games check multiplayer privilege by calling XUserCheckPrivilege with the XPRIVILEGE_MULTIPLAYER_SESSIONS flag.
+      </remarks>
+    <exemptions>
+      This requirement does not apply to system link (console-to-console) game modes.
+      </exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>93</tcr_id>
+    <short_description>TCR # 093 CMTV No Communication</short_description>
+    <category>CMTV</category>
+    <requirements>
+      Games must not transmit text chat, voice chat, or video chat when the communication privilege is turned off.
+      </requirements>
+    <intent>
+      Maintain the integrity of the privilege system.
+      </intent>
+    <remarks>
+      In cases in which multiple players are signed in on one console, games must respect the most restrictive communications settings among all users. This includes situations in which the most restrictive settings are set for a gamer who is idle in a session (that is, signed in to the console but not actively participating in the session).
+      Games that use XHV meet the voice communication requirement of this TCR by registering remote users playing on Xbox LIVE as remote talkers in the XHV API. XHV enforces a player's individual voice restrictions through the headset; however, XHV will enforce the most restrictive communication among all players on the same console through the speakers and through the Xbox 360 Kinect Sensor.
+      The game may choose to notify active players that the restrictive privileges are set for an idle player signed in to the console.
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>94</tcr_id>
+    <short_description>TCR # 094 CMTV Friends-Only Communication </short_description>
+    <category>CMTV</category>
+    <requirements>
+      Games must only allow communication between friends when the friends-only communication privilege is on.
+      </requirements>
+    <intent>
+      Maintain the integrity of the privilege system.
+      </intent>
+    <remarks>
+      In cases in which multiple players are signed in on one console, games must respect the most restrictive communications settings among all users. This includes situations in which the most restrictive settings are set for a gamer who is idle in a session (that is, signed in to the console but not actively participating in the session).
+      Games that use XHV meet the voice communication requirement of this TCR by registering remote users playing on Xbox LIVE as remote talkers in the XHV API. XHV enforces a player's individual voice restrictions through the headset; however, XHV will enforce the most restrictive communication among all players on the same console through the speakers and through the Xbox 360 Kinect Sensor.
+      The game may choose to notify active players that the restrictive privileges are set for an idle player signed in to the console.
+      It is acceptable for games to be more restrictive and not allow any communication when the friends-only communication privilege is turned on.
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>115</tcr_id>
+    <short_description>TCR # 115 MPS Game Invitations</short_description>
+    <category>MPS</category>
+    <requirements>
+      Games must allow players to send game invitations for game sessions. Games must also allow players to join sessions.
+      </requirements>
+    <intent>
+      The Xbox LIVE service is designed to provide an easy, consistent way for players to join multiplayer game sessions and invite other players.
+      </intent>
+    <remarks>
+       To meet this requirement, games must:
+
+      Provide the ability to send a game invitation from the Xbox Guide or by calling the XInviteSend function.
+      Register for the XN_LIVE_INVITE_ACCEPTED notification during game launch and allow the player to join the multiplayer game session when this notification is sent.
+      Call XInviteGetAcceptedInfo to retrieve invitation details.
+      This requirement applies to both same-title and cross-title invitations and joins.
+
+      It is not necessary to allow a player to join the game session if the session is full.
+      </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>117</tcr_id>
+    <short_description>TCR # 118 STR Game Save Dependencies </short_description>
+    <category>STR</category>
+    <requirements>
+      Game save progress must be associated with a gamer profile and must not have any dependencies on shared content.
+    </requirements>
+    <intent>
+      Players expect their individual profiles to be the hub for all of their saved game data. Shared game content is intended to be shared with all users of the console.
+    </intent>
+    <remarks>
+      Progress saved while in a game mode such as campaign, season, career, and so on, is considered game save progress and must be associated with a gamer profile. Data can be saved in association with a gamer profile either by passing a non-NULL user index to the XContentCreate function or by using the XUserWriteProfileSettings function.
+      A game's shared content, such as shared unlocks, offline statistics, and so on, is not required to have an association with a gamer profile.
+    </remarks>
+    <exemptions>none</exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <TCRDefinition>
+    <tcr_id>118</tcr_id>
+    <short_description>TCR # 117 VID Video Mode Support</short_description>
+    <category>VID</category>
+    <requirements>
+      Games must support all video output packs, modes, and resolutions. Games must not have dependencies on any video output packs, modes, or resolutions.
+    </requirements>
+    <intent>
+      Players expect any Xbox 360 titles to be compatible with any video output pack, video resolution, or video mode supported by the console now and in the future.
+    </intent>
+    <remarks>
+      Games should not assume that the video output packs, modes, and resolutions currently available are the only ones that the platform will ever support. For example, VGA mode could be updated in the future to support other resolutions, or additional video packs could be added.
+    </remarks>
+    <exemptions>
+      PAL 50 is not required.
+    </exemptions>
+    <xdk>Nov 2012 Version: 21250.5</xdk>
+  </TCRDefinition>
+  <CTC>
+    <tcr_id>1</tcr_id>
+    <testcase_id>CTC 1</testcase_id>
+    <type>Compliance</type>
+    <short_description>Compliance 1, System: 001 Game Stability Requirements</short_description>
+    <Requirements>None</Requirements>
+    <Tools>	1.	xbWatson 
+2.	XKD </Tools>
+    <Configuration>None</Configuration>
+    <Definition>None</Definition>
+    <Steps>	1.	Navigate all menus and submenus, watch all cinematic sequences, and play all stages/areas/levels. 
+2.	In addition, always monitor for crashes while performing all other test cases. </Steps>
+    <Documentation>None</Documentation>
+<Result>	There must be no extended unresponsive states, unintentional loss of player data (e.g. saved data), crashes, hangs, or unintended reboots of the console.
+
+An “extended unresponsive state” refers to any state within the course of gameplay where user input is not recognized, and there is no indication of why.  Loading screens, cinematics, and other areas that could be considered “unresponsive” but are clearly denoted as normal gameplay path do not fail this requirement.  For example, a 45-second stretch of a static screen with no text or audio would not pass this test, even if the game continued on as normal afterwards.
+
+An “unintended reboot” does not include a situation where the title must launch a separate XEX file or request a separate disc to be inserted via a call to XLaunchNewImage or XSwapDisc. Note that even in this case, there will be xbWatson debug output denoting a console reboot has occurred.
+</Result>
+    <PassExamples>
+      •	In response to a Player's decision to change game modes, the title soft-reboots the console to switch to a different XEX. The Xbox 360 System Startup Logo is not displayed.
+      •	The title hard-locks when attempting to load from a storage device that contains a transferred save. The save was transferred through the Xbox Neighborhood.
+    </PassExamples>
+<FailExamples>	•	The title fails to launch when the Xbox Dashboard language is set to a specific language, regardless of whether the language is supported or not.
+•	The title causes the system to entirely reboot, causing the Xbox 360 System Startup Logo to be displayed.
+</FailExamples>
+<NAExamples>None</NAExamples>
+<Analysis>None</Analysis>
+<Faq>None</Faq>
+<Hardware>1.	All console configurations.</Hardware>
+  </CTC>
+  <CTC>
+    <tcr_id>1</tcr_id>
+    <testcase_id>CTC 2</testcase_id>
+    <type>Compliance</type>
+    <short_description>Compliance 2 (dummy), System: 001 Game Stability Requirements</short_description>
+    <Requirements>None</Requirements>
+    <Tools>	1.	xbWatson 
+2.	XKD </Tools>
+    <Configuration>None</Configuration>
+    <Definition>None</Definition>
+    <Steps>	1.	Navigate all menus and submenus, watch all cinematic sequences, and play all stages/areas/levels. 
+2.	In addition, always monitor for crashes while performing all other test cases. </Steps>
+    <Documentation>None</Documentation>
+<Result>	There must be no extended unresponsive states, unintentional loss of player data (e.g. saved data), crashes, hangs, or unintended reboots of the console.
+
+An “extended unresponsive state” refers to any state within the course of gameplay where user input is not recognized, and there is no indication of why.  Loading screens, cinematics, and other areas that could be considered “unresponsive” but are clearly denoted as normal gameplay path do not fail this requirement.  For example, a 45-second stretch of a static screen with no text or audio would not pass this test, even if the game continued on as normal afterwards.
+
+An “unintended reboot” does not include a situation where the title must launch a separate XEX file or request a separate disc to be inserted via a call to XLaunchNewImage or XSwapDisc. Note that even in this case, there will be xbWatson debug output denoting a console reboot has occurred.
+</Result>
+    <PassExamples>
+      •	In response to a Player's decision to change game modes, the title soft-reboots the console to switch to a different XEX. The Xbox 360 System Startup Logo is not displayed.
+      •	The title hard-locks when attempting to load from a storage device that contains a transferred save. The save was transferred through the Xbox Neighborhood.
+    </PassExamples>
+<FailExamples>	•	The title fails to launch when the Xbox Dashboard language is set to a specific language, regardless of whether the language is supported or not.
+•	The title causes the system to entirely reboot, causing the Xbox 360 System Startup Logo to be displayed.
+</FailExamples>
+<NAExamples>None</NAExamples>
+<Analysis>None</Analysis>
+<Faq>None</Faq>
+<Hardware>1.	All console configurations.</Hardware>
+  </CTC>
+</Tables>

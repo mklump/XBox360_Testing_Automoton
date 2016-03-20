@@ -1,0 +1,183 @@
+﻿<Grid x:Class="MPS086.MPS086CTC1UI"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:vm="clr-namespace:MPS086"
+            Background="{Binding DataContext.CurrentTheme.Background2, RelativeSource={RelativeSource FindAncestor, AncestorType=Window} }" >
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CATModel;component/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style TargetType="TextBlock" x:Key="TitleField">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Border" x:Key="ModuleBorderStyle">
+            <Setter Property="BorderBrush" Value="#FF828790" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TextBlockInstructionStyle">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="5,1,1,1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        <Style TargetType="Button" x:Key="BeginButtonStyle" BasedOn="{StaticResource ThemeButtonStyle}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Content" Value="Begin" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+            <Style TargetType="Button" x:Key="NextButtonStyle" BasedOn="{StaticResource ThemeButtonStyle}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Content" Value="Next" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+            <Style TargetType="Button" x:Key="DoneButtonStyle" BasedOn="{StaticResource ThemeButtonStyle}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Content" Value="Done" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <StackPanel Orientation="Vertical">
+        <!-- Test Case Title -->
+        <TextBlock Text="CAT Module For CTC MPS 086-1" Style="{StaticResource TitleField}" />
+        <!-- Module Name -->
+        <Grid Margin="5,0,0,0" >
+            <TextBlock Text="No Multiplayer " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <StackPanel Orientation="Vertical" Visibility="{Binding OverviewPageVisibility}">
+            <StackPanel Orientation="Vertical">
+                
+                <!-- module instructions -->
+                <Border Style="{StaticResource ModuleBorderStyle}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical">
+                        <TextBox Style="{StaticResource ThemeTextBoxStyle}" IsReadOnly="True" HorizontalAlignment="Center" MaxWidth="300" AcceptsReturn="True" TextWrapping="Wrap"  
+                    xml:space="preserve">    
+    This module automates the required 
+    configuration steps of 
+    CTC MPS 086-1: No Multiplayer.
+    
+    This test requires TWO devkits.  Please select 
+    TWO devkits and select "Begin" to continue.
+                                
+    To speed the test up, select devkits that already 
+    have the title installed to them!
+    
+
+                        </TextBox>
+
+                    </StackPanel>
+                </Border>
+                <Button Click="NextPage" Style="{StaticResource BeginButtonStyle}" Margin="3" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Visibility="{Binding EmulationPageVisibility}">
+                <TextBlock HorizontalAlignment="Center" Foreground="Red">Emulated Title Detected</TextBlock>
+                <Label HorizontalAlignment="Center">Which Devkit is attached to your PC by USB cable?</Label>
+                <ListBox MinWidth="150" MaxWidth="280" MinHeight="65" ItemsSource="{Binding Path=AvailableConsoles}" DisplayMemberPath="Name" SelectedItem="{Binding Path=ChildConsole}"></ListBox>
+                <Button Click="NextPage" Style="{StaticResource NextButtonStyle}" Margin="3" HorizontalAlignment="Center"/>
+
+        </StackPanel>
+        <Grid Visibility="{Binding SetupPageVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="Access Test" MinHeight="350" MinWidth="400" Margin="5,5,20,5" BorderBrush="Black">
+                <Grid Background="White" Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Label Background="#FFE5DFCA">Setup</Label>
+                        </Grid>
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding AccessSetupText}" HorizontalAlignment="Left"  IsEnabled="{Binding AccessTestNeedsResult}">
+                    </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1"> 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Background="#FFE5DFCA">Execution</Label>
+                        <Grid Grid.Row="1" Background="White" Margin="3">
+                            <TextBlock Text="{Binding AccessExecutionText}" TextWrapping="Wrap" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="{Binding AccessTestNeedsResult}" ></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="2" Background="Black" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassAccess" Grid.Column="0" Margin="3" MaxWidth="100" MaxHeight="50" IsEnabled="{Binding AccessTestCanAcceptResult}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailAccess" Grid.Column="1" Margin="3" MaxWidth="100" MaxHeight="50" IsEnabled="{Binding AccessTestCanAcceptResult}">Fail</Button>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Header="Invite Test" MinHeight="350" MinWidth="400" Margin="5" BorderBrush="Black">
+                <Grid Background="White" Margin="3">
+                    <Grid.RowDefinitions>
+                        
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Background="#FFE5DFCA">Setup</Label>
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding InviteSetupText}" HorizontalAlignment="Left"  IsEnabled="{Binding InviteTestNeedsResult}"></TextBlock>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Background="#FFE5DFCA">Execution</Label>
+                        <TextBlock Grid.Row="1" Text="{Binding InviteExecutionText}" TextWrapping="Wrap" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="{Binding InviteTestNeedsResult}"></TextBlock>
+                        <TextBlock Visibility="{Binding EmulationMessageVisibility}" TextWrapping="Wrap" Foreground="Red" Margin="70,0,0,0">This appears to be an emulated title. Please walk over to the console and start the emulation</TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="2" Background="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="PassInvite" Grid.Column="0" Margin="3" MaxWidth="100" MaxHeight="50" IsEnabled="{Binding InviteTestCanAcceptResult}">Pass</Button>
+                        <Button Style="{StaticResource ThemeButtonStyle}" Click="FailInvite" Grid.Column="1" Margin="3" MaxWidth="100" MaxHeight="50" IsEnabled="{Binding InviteTestCanAcceptResult}">Fail</Button>
+                    </Grid>
+                </Grid>
+            </GroupBox>           
+        </Grid>
+    </StackPanel>
+</Grid>

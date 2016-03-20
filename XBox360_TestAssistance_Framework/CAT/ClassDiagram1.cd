@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Generated WPF App Classes">
+    <Position X="0.5" Y="0.521" Height="0.291" Width="1.783" />
+  </Comment>
+  <Comment CommentText="WPF Application UI View &amp; associated View-Model classes">
+    <Position X="2.729" Y="0.521" Height="0.291" Width="11.262" />
+  </Comment>
+  <Comment CommentText="Data Model classes">
+    <Position X="0.5" Y="4.5" Height="0.291" Width="19.054" />
+  </Comment>
+  <Comment CommentText="XAML Type Converters">
+    <Position X="4" Y="3" Height="0.291" Width="4.71" />
+  </Comment>
+  <Comment CommentText="Utility classes">
+    <Position X="14.404" Y="0.5" Height="0.291" Width="5.523" />
+  </Comment>
+  <Comment CommentText="Enumerations">
+    <Position X="0.5" Y="9.979" Height="0.291" Width="5.012" />
+  </Comment>
+  <Class Name="CAT.App" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.DataModel">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="catDatabase" Hidden="true" />
+      <Method Name="DataModel" Hidden="true" />
+      <Field Name="DataPath" Hidden="true" />
+      <Property Name="GameTitle" Hidden="true" />
+      <Method Name="GetModuleTables" Hidden="true" />
+      <Method Name="IsRequired" Hidden="true" />
+      <Field Name="ModuleDataBase" Hidden="true" />
+      <Field Name="ModulePath" Hidden="true" />
+      <Method Name="SafeGetField" Hidden="true" />
+      <Method Name="SafeToInt32" Hidden="true" />
+      <Field Name="TCRDataBase" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="CAT.DataModel.Platform" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.CATPlatformData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.CATVersionData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.TCR" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.XboxTitle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="CAT.DataModel.ICATTitleFilter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.TCRVersion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.XboxTitleFilter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.TCRTestCase" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.CATModuleInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CAT.DataModel.TCRCategory" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACCAEAAAAAgAAAAABkAAAEgAQEgCAACggAAAAAAgAA=</HashCode>
+      <FileName>DataModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.DebugOutputUI" Collapsed="true">
+    <Position X="8.25" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>DebugOutput.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.DebugOutputViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAARQAAQCgCAIAYYCEAECAwicgCMIKAARAAiACAAAA=</HashCode>
+      <FileName>DebugOutputViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.MainViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>f/CZmBVqXSMCK5UhjkEEIRQAhKjEcEJySAQHj4BAAwA=</HashCode>
+      <FileName>MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.MainWindow" Collapsed="true">
+    <Position X="2.75" Y="1" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAIABAEAgAAACABgEEAAAAEEABAACAATAIQCAAIACAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.ModuleContext">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <Members>
+      <Field Name="allDevices" Hidden="true" />
+      <Field Name="DefaultLogFileName" Hidden="true" />
+      <Field Name="isModal" Hidden="true" />
+      <Field Name="logDirectory" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Field Name="testCase" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAMIgAAIAAIAIAACECgggAEAgAABAAgAAAIAA=</HashCode>
+      <FileName>ModuleContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.ModuleViewItem">
+    <Position X="11" Y="12.5" Width="1.5" />
+    <Members>
+      <Field Name="isSelected" Hidden="true" />
+      <Field Name="moduleInfo" Hidden="true" />
+      <Method Name="ModuleViewItem" Hidden="true" />
+      <Property Name="TCRTestCaseViewItem" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQAIAgMAAACAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ModuleViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.Native">
+    <Position X="16.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Native.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.ProgressBarWindow" Collapsed="true">
+    <Position X="10.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>ProgressBar.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.ProgressBarViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEggCABAAAMAAACAQAgACgAAEAAAEAIAQAECAAAA=</HashCode>
+      <FileName>ProgressBarViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.Settings" Collapsed="true">
+    <Position X="6.25" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.SettingsViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAGjCAIokCiDGJAzKTmQITGIkqAg1Qog8UEDCgCCYoY=</HashCode>
+      <FileName>SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.ShutdownSynchronization">
+    <Position X="14.5" Y="1" Width="1.5" />
+    <Members>
+      <Field Name="deferCount" Hidden="true" />
+      <Field Name="quitDispatcher" Hidden="true" />
+      <Field Name="shuttingDown" Hidden="true" />
+      <Field Name="syncLock" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAgAAABAAAAAAAAAAAAAIQgAAAAAAAAAAAAAAAAAAUA=</HashCode>
+      <FileName>ShutdownSynchronization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.TCRCategoryViewItem" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <Members>
+      <Field Name="isExpanded" Hidden="true" />
+      <Field Name="isSelected" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Property Name="MainViewModel" Hidden="true" />
+      <Field Name="matchesFilter" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Field Name="tcrCategory" Hidden="true" />
+      <Property Name="TCRCategory" Hidden="true" />
+      <Method Name="TCRCategoryViewItem" Hidden="true" />
+      <Field Name="tcrVersionViewItem" Hidden="true" />
+      <Property Name="TCRVersionViewItem" Hidden="true" />
+      <Field Name="tcrViewItems" Hidden="true" />
+      <Property Name="TCRViewItems" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EAAQAQAQAAAAEoBAIAAQACQAgAAEABAAAIAAABEAAgE=</HashCode>
+      <FileName>TCRCategoryViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.TCRPlatformViewItem" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <Members>
+      <Field Name="isSelected" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Property Name="MainViewModel" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Field Name="platform" Hidden="true" />
+      <Property Name="Platform" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Method Name="TCRPlatformViewItem" Hidden="true" />
+      <Field Name="tcrVersionViewItems" Hidden="true" />
+      <Property Name="TCRVersionViewItems" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAEoAAIAAAACQAgAAAAAAACAAAAAgAgEA=</HashCode>
+      <FileName>TCRPlatformViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.TCRTestCaseViewItem" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <Members>
+      <Field Name="catModuleViewItems" Hidden="true" />
+      <Property Name="CATModuleViewItems" Hidden="true" />
+      <Field Name="isSelected" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Field Name="tcrTestCase" Hidden="true" />
+      <Method Name="TCRTestCaseViewItem" Hidden="true" />
+      <Property Name="TCRViewItem" Hidden="true" />
+      <Property Name="Tools" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAADAAAQgAAAGoIAIACgASQAgAIEABEIwAAAJACAAAg=</HashCode>
+      <FileName>TCRTestCaseViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.TCRVersionViewItem" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <Members>
+      <Field Name="isSelected" Hidden="true" />
+      <Property Name="IsSelected" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Property Name="Platform" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Field Name="tcrCategoryViewItems" Hidden="true" />
+      <Property Name="TCRCategoryViewItems" Hidden="true" />
+      <Property Name="TCRPlatformViewItem" Hidden="true" />
+      <Field Name="tcrVersion" Hidden="true" />
+      <Property Name="TCRVersion" Hidden="true" />
+      <Method Name="TCRVersionViewItem" Hidden="true" />
+      <Field Name="tcrViewItems" Hidden="true" />
+      <Property Name="TCRViewItems" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQAAAAEpAAIAAQACQAggAAABAECAACAAkAAAA=</HashCode>
+      <FileName>TCRVersionViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.TCRViewItem" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <Members>
+      <Property Name="FlowDocumentContents" Hidden="true" />
+      <Field Name="isSelected" Hidden="true" />
+      <Field Name="mainViewModel" Hidden="true" />
+      <Field Name="matchesFilter" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Field Name="tcr" Hidden="true" />
+      <Field Name="tcrCategory" Hidden="true" />
+      <Field Name="tcrCategoryViewItem" Hidden="true" />
+      <Property Name="TCRCategoryViewItem" Hidden="true" />
+      <Field Name="tcrTestCaseViewItems" Hidden="true" />
+      <Property Name="TCRTestCaseViewItems" Hidden="true" />
+      <Method Name="TCRViewItem" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EAACAQAQAIAEEoNAIEAgACQAgAIEAASYAEABABAAAAA=</HashCode>
+      <FileName>TCRViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.Theme" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="2.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AEVqAIFh0BYBCIgwwQACSAUAilg2QgEAoAwoS4AgEIA=</HashCode>
+      <FileName>Theme.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.XboxDevice" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="21.75" Width="2.75" />
+    <NestedTypes>
+      <Delegate Name="CAT.XboxDevice.ConnectCompleteDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="CAT.XboxDevice.MonitorDebugDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="CAT.XboxDevice.MonitorAPIDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="CAT.XboxDevice.MonitorSymbolsDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="CAT.XboxDevice.OnTitleFailureDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="CAT.XboxDevice.ControllerPort" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>XboxDevice.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>XcQ4TQbeoy/rfuCOimsGnpZi9LkkvqhKGxqgAFcapFU=</HashCode>
+      <FileName>XboxDevice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.XboxViewItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>rdboXUJpy1uqX84uN3wTdqYi5h4jJ+r/ra4G+oHdt3U=</HashCode>
+      <FileName>XboxViewItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HtmlToXamlConvert.HtmlToXamlConverter">
+    <Position X="16" Y="2.75" Width="2" />
+    <Members>
+      <Method Name="AddBlock" Hidden="true" />
+      <Method Name="AddBreak" Hidden="true" />
+      <Method Name="AddColumnInformation" Hidden="true" />
+      <Method Name="AddDataToTableCell" Hidden="true" />
+      <Method Name="AddHyperlink" Hidden="true" />
+      <Method Name="AddImage" Hidden="true" />
+      <Method Name="AddImplicitParagraph" Hidden="true" />
+      <Method Name="AddInline" Hidden="true" />
+      <Method Name="AddList" Hidden="true" />
+      <Method Name="AddListItem" Hidden="true" />
+      <Method Name="AddOrphanListItems" Hidden="true" />
+      <Method Name="AddParagraph" Hidden="true" />
+      <Method Name="AddSection" Hidden="true" />
+      <Method Name="AddSpanOrRun" Hidden="true" />
+      <Method Name="AddTable" Hidden="true" />
+      <Method Name="AddTableCellsToTableRow" Hidden="true" />
+      <Method Name="AddTableColumn" Hidden="true" />
+      <Method Name="AddTableColumnGroup" Hidden="true" />
+      <Method Name="AddTableRowsToTableBody" Hidden="true" />
+      <Method Name="AddTextRun" Hidden="true" />
+      <Method Name="AnalyzeTableStructure" Hidden="true" />
+      <Method Name="AnalyzeTbodyStructure" Hidden="true" />
+      <Method Name="AnalyzeTRStructure" Hidden="true" />
+      <Method Name="ApplyLocalProperties" Hidden="true" />
+      <Method Name="ApplyPropertiesToTableCellElement" Hidden="true" />
+      <Method Name="CalculateColumnSpan" Hidden="true" />
+      <Method Name="ClearActiveRowSpans" Hidden="true" />
+      <Method Name="ComposeThicknessProperty" Hidden="true" />
+      <Method Name="ConvertHtmlToXaml" Hidden="true" />
+      <Method Name="DefineInlineFragmentParent" Hidden="true" />
+      <Method Name="ExtractInlineFragment" Hidden="true" />
+      <Method Name="GetAttribute" Hidden="true" />
+      <Method Name="GetCellFromSingleCellTable" Hidden="true" />
+      <Method Name="GetColorValue" Hidden="true" />
+      <Method Name="GetColumnWidth" Hidden="true" />
+      <Method Name="GetCssAttribute" Hidden="true" />
+      <Method Name="GetElementProperties" Hidden="true" />
+      <Method Name="GetNextColumnIndex" Hidden="true" />
+      <Method Name="GetNextColumnStart" Hidden="true" />
+      <Method Name="GetRowSpan" Hidden="true" />
+      <Method Name="InitializeActiveRowSpans" Hidden="true" />
+      <Field Name="inlineFragmentParentElement" Hidden="true" />
+      <Method Name="SetPropertyValue" Hidden="true" />
+      <Method Name="TryGetLengthValue" Hidden="true" />
+      <Method Name="UnQuote" Hidden="true" />
+      <Method Name="VerifyColumnStartsAscendingOrder" Hidden="true" />
+      <Field Name="XamlBackground" Hidden="true" />
+      <Field Name="XamlBorderBrush" Hidden="true" />
+      <Field Name="XamlBorderThickness" Hidden="true" />
+      <Field Name="XamlBrushesBlack" Hidden="true" />
+      <Field Name="XamlFlowDocument" Hidden="true" />
+      <Field Name="XamlFontFamily" Hidden="true" />
+      <Field Name="XamlFontSize" Hidden="true" />
+      <Field Name="XamlFontSizeLarge" Hidden="true" />
+      <Field Name="XamlFontSizeMedium" Hidden="true" />
+      <Field Name="XamlFontSizeSmall" Hidden="true" />
+      <Field Name="XamlFontSizeXLarge" Hidden="true" />
+      <Field Name="XamlFontSizeXSmall" Hidden="true" />
+      <Field Name="XamlFontSizeXXLarge" Hidden="true" />
+      <Field Name="XamlFontSizeXXSmall" Hidden="true" />
+      <Field Name="XamlFontStyle" Hidden="true" />
+      <Field Name="XamlFontWeight" Hidden="true" />
+      <Field Name="XamlFontWeightBold" Hidden="true" />
+      <Field Name="XamlForeground" Hidden="true" />
+      <Field Name="XamlHyperlink" Hidden="true" />
+      <Field Name="XamlHyperlinkNavigateUri" Hidden="true" />
+      <Field Name="XamlHyperlinkTargetName" Hidden="true" />
+      <Field Name="XamlLineBreak" Hidden="true" />
+      <Field Name="XamlList" Hidden="true" />
+      <Field Name="XamlListItem" Hidden="true" />
+      <Field Name="XamlListMarkerStyle" Hidden="true" />
+      <Field Name="XamlListMarkerStyleBox" Hidden="true" />
+      <Field Name="XamlListMarkerStyleCircle" Hidden="true" />
+      <Field Name="XamlListMarkerStyleDecimal" Hidden="true" />
+      <Field Name="XamlListMarkerStyleDisc" Hidden="true" />
+      <Field Name="XamlListMarkerStyleLowerLatin" Hidden="true" />
+      <Field Name="XamlListMarkerStyleLowerRoman" Hidden="true" />
+      <Field Name="XamlListMarkerStyleNone" Hidden="true" />
+      <Field Name="XamlListMarkerStyleSquare" Hidden="true" />
+      <Field Name="XamlListMarkerStyleUpperLatin" Hidden="true" />
+      <Field Name="XamlListMarkerStyleUpperRoman" Hidden="true" />
+      <Field Name="XamlMargin" Hidden="true" />
+      <Field Name="xamlNamespace" Hidden="true" />
+      <Field Name="XamlPadding" Hidden="true" />
+      <Field Name="XamlParagraph" Hidden="true" />
+      <Field Name="XamlRun" Hidden="true" />
+      <Field Name="XamlSection" Hidden="true" />
+      <Field Name="XamlSpan" Hidden="true" />
+      <Field Name="XamlTable" Hidden="true" />
+      <Field Name="XamlTableCell" Hidden="true" />
+      <Field Name="XamlTableCellBorderBrush" Hidden="true" />
+      <Field Name="XamlTableCellBorderThickness" Hidden="true" />
+      <Field Name="XamlTableCellColumnSpan" Hidden="true" />
+      <Field Name="XamlTableCellRowSpan" Hidden="true" />
+      <Field Name="XamlTableColumn" Hidden="true" />
+      <Field Name="XamlTableRow" Hidden="true" />
+      <Field Name="XamlTableRowGroup" Hidden="true" />
+      <Field Name="XamlTextAlignment" Hidden="true" />
+      <Field Name="XamlTextDecorations" Hidden="true" />
+      <Field Name="XamlTextDecorationsUnderline" Hidden="true" />
+      <Field Name="XamlTextIndent" Hidden="true" />
+      <Field Name="XamlWidth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CRkIJA4AFA+gQ0IKAAMJ0yFBEoOiUuOQoGIckgwyvBc=</HashCode>
+      <FileName>HtmlXamlConverter\HtmlToXamlConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAQABAABABAAAIQAQAAIEAAAJANRAsAWBAAAAASCAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAT.InvertBoolConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InvertBoolConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.InvertBooleanToVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InvertBooleanToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAACBAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAT.XboxDebugManagerNative" Collapsed="true">
+    <Position X="18" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABBAAABAAg=</HashCode>
+      <FileName>XboxDebugManagerNative.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CAT.IDevice">
+    <Position X="16.25" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.IModule">
+    <Position X="18" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.IModuleContext">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.IProgressBar">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.ITCR">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.ITCRCategory">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.ITCRPlatform">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.ITCRTestCase">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.ITCRVersion">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.IXboxDevice">
+    <Position X="16.25" Y="7.25" Width="3" />
+    <InheritanceLine Type="CAT.IDevice" FixedToPoint="true">
+      <Path>
+        <Point X="17" Y="6.94" />
+        <Point X="17" Y="7.096" />
+        <Point X="17.75" Y="7.096" />
+        <Point X="17.75" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CAT.IXboxTitle">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="CAT.XboxKitType" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="CAT.Language" Collapsed="true">
+    <Position X="4" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="CAT.Region" Collapsed="true">
+    <Position X="4" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="CAT.VideoResolution" Collapsed="true">
+    <Position X="2.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="CAT.VideoStandard" Collapsed="true">
+    <Position X="2.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Delegate Name="CAT.ProgressDelegate" Collapsed="true">
+    <Position X="12.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
